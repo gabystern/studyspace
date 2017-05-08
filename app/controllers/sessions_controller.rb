@@ -5,11 +5,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find(username: params[:username])
-    if @user.authenticate(params[:password])
+    @user = User.find_by(username: params[:username])
+    if @user.present? && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      ##redirect_to study_room_index page that has all of the events listed
     else
-      flash[:message] = "Incorrect username or password. Try again"
+      flash[:notice] = "Incorrect username or password. Try again."
       render :new
     end
   end
