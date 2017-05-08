@@ -1,0 +1,8 @@
+<h3> Available Study Rooms </h3>
+
+<% @study_rooms.each do |study_room|  %>
+
+<ul>
+  <li> <%= link_to "Category: #{study_room.category.name}, Location: #{study_room.location.name}", study_room_path(study_room.id) %> </li>
+</ul>
+<% end %>

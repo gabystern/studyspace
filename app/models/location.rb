@@ -1,3 +1,4 @@
 class Location < ApplicationRecord
-  belongs_to :study_room
+  has_many :study_rooms
+
 end
