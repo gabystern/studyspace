@@ -17,7 +17,7 @@ Category.create(name: 'History')
 Category.create(name: 'Ruby')
 Category.create(name: "Knitting")
 
-StudyRoom.create(category_id: 1, location_id: 1, name: 'Beginner Ruby', start_time: '2017-05-10 02:00:00', end_time: '2017-05-10 05:00:00' )
+StudyRoom.create(category_id: 1, location_id: 1, name: 'Beginner Ruby', start_time: '2017-05-10 02:00:00', end_time: '2017-05-10 05:00:00')
 StudyRoom.create(category_id: 1, location_id: 2, name: 'Advanced Ruby', start_time: '2017-05-11 04:00:00', end_time: '2017-05-11 06:00:00')
 StudyRoom.create(category_id: 2, location_id: 1, name: 'Studying CSS', start_time: '2017-05-11 05:00:00', end_time: '2017-05-10 06:00:00')
 StudyRoom.create(category_id: 3, location_id: 3, name: 'Studying Chem', start_time: '2017-05-12 02:00:00', end_time: '2017-05-12 05:00:00')
