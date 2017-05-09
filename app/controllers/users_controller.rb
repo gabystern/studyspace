@@ -7,10 +7,10 @@ class UsersController < ApplicationController
   end
 
   def create
-   
+
     @user = User.new(user_params)
-    if @user.valid? 
-      if params[:user][:password] == params[:user][:password_confirmation] 
+    if @user.valid?
+      if params[:user][:password] == params[:user][:password_confirmation]
         @user.save
         session[:user_id] = @user.id
         redirect_to user_path(@user)
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       flash[:notice] = "This username is taken. Please try another."
       render :new
     end
-    
+
   end
 
   def show

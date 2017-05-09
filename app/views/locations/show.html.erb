@@ -1,0 +1,39 @@
+<h1><%= @location.name %> </h1>
+<p>Address: <%= @location.address %> </p>
+
+<%= link_to "Back to All Locations", locations_path %>
+
+<p> ----------------------------------------------------------------------------  </p>
+
+Upcoming Study Rooms:
+<ul>
+<% @location.study_rooms.each do |study_room| %>
+  <% if study_room.name != nil && study_room.start_time > Time.now%>
+    <li><%= link_to "#{study_room.name} - #{study_room.start_time.strftime("%A, %B %d %I:%M %p")}", study_room_path(study_room) %> </li>
+  <% end %>
+<% end %>
+</ul>
+
+Past Study Rooms:
+<ul>
+<% @location.study_rooms.each do |study_room| %>
+  <% if study_room.name != nil && study_room.start_time < Time.now%>
+    <li><%= link_to "#{study_room.name} - #{study_room.start_time.strftime("%A, %B %d %I:%M %p")}", study_room_path(study_room) %> </li>
+  <% elsif !!study_room.present? && study_room.start_time < Time.now%>
+    There have not been any events yet.
+  <% end %>
+<% end %>
+</ul>
+
+<p> ----------------------------------------------------------------------------  </p>
+
+Types of Study Rooms Held Here:
+<ul>
+<% @location.study_rooms.each do |study_room| %>
+  <li><%= link_to study_room.category.name, category_path(study_room.category) %> </li>
+<% end %>
+</ul>
+
+<p> ----------------------------------------------------------------------------  </p>
+
+Connect with other people who have studied here
