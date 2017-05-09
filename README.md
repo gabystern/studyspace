@@ -11,7 +11,7 @@
 
 
 ## To skateboard
-Study Room Index: 
+Study Room Index:
 # Should be able to link to any study room, related location and owner.
 # Should be able to create new study room
 # Should not display create button if user is not signed in
@@ -48,7 +48,7 @@ Improved Model SQL methods: - DONE
 # Location.upcoming_study_rooms - filter by current date - OK
 # Category.top_user -OK
 # Category.top_location -OK
-# Category.locations - OK 
+# Category.locations - OK
 # Category.upcoming_study_rooms - filter by current date - OK
 # StudyRoom.past - OK
 Specs
