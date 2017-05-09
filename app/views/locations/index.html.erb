@@ -1,0 +1,7 @@
+<h1> Find a Study Location! </h1>
+
+<ul>
+<%@locations.each do |location| %>
+  <li><%=link_to location.name, location_path(location) %></li>
+<% end %>
+</ul>
