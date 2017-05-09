@@ -1,39 +1,57 @@
 <h1><%= @location.name %> </h1>
 <p>Address: <%= @location.address %> </p>
 
-<%= link_to "Back to All Locations", locations_path %>
-
 <p> ----------------------------------------------------------------------------  </p>
 
 Upcoming Study Rooms:
 <ul>
-<% @location.study_rooms.each do |study_room| %>
-  <% if study_room.name != nil && study_room.start_time > Time.now%>
-    <li><%= link_to "#{study_room.name} - #{study_room.start_time.strftime("%A, %B %d %I:%M %p")}", study_room_path(study_room) %> </li>
+  <% if @location.upcoming.empty? %>
+    No one plans to study here yet. Be the first!
+  <% else %>
+    <% @location.upcoming.each do |room| %>
+      <li> <%= link_to "#{room.name} - #{room.start_time}"%> </li>
+    <% end %>
   <% end %>
-<% end %>
 </ul>
 
 Past Study Rooms:
 <ul>
-<% @location.study_rooms.each do |study_room| %>
-  <% if study_room.name != nil && study_room.start_time < Time.now%>
-    <li><%= link_to "#{study_room.name} - #{study_room.start_time.strftime("%A, %B %d %I:%M %p")}", study_room_path(study_room) %> </li>
-  <% elsif !!study_room.present? && study_room.start_time < Time.now%>
-    There have not been any events yet.
+  <% if @location.past.empty? %>
+    No one has previously studied here.
+  <% else %>
+    <% @location.past.each do |room| %>
+      <li> <%= link_to "#{room.name} - #{room.start_time}"%> </li>
+    <% end %>
   <% end %>
-<% end %>
 </ul>
 
 <p> ----------------------------------------------------------------------------  </p>
 
 Types of Study Rooms Held Here:
 <ul>
-<% @location.study_rooms.each do |study_room| %>
-  <li><%= link_to study_room.category.name, category_path(study_room.category) %> </li>
+    <% if @location.categories.empty? %>
+      None yet...
+    <% else %>
+  <% @location.categories.each do |category| %>
+    <li><%= link_to category.name, category_path(category) %> </li>
+  <% end %>
 <% end %>
 </ul>
 
 <p> ----------------------------------------------------------------------------  </p>
 
 Connect with other people who have studied here
+<ul>
+  <% if @location.users.empty? %>
+      Start the trend and be the first!
+    <% else %>
+  <% @location.users.each do |user| %>
+    <li><%= link_to user.username, user_path(user) %> </li>
+  <% end %>
+<% end %>
+</ul>
+
+<br>
+<br>
+
+<%= link_to "Back to All Locations", locations_path %>
