@@ -56,7 +56,7 @@ Specs
 # Study Room joining then viewing
 # User view includes updated study rooms, locations, categories
 Analytics page
-# ?????
+# ????? - Top locations, top users, top categories, top users by location/category, # stretch goal - highest rated, quiet places, free study places.
 CSS/Design
 # Make site look pretty
 
@@ -68,6 +68,7 @@ CSS/Design
 ## Users can message friends
 ## Users can create study room from current location automatically.
 ## Stubbing url with study room name
+## Suggest friends who are in similar locations/categories
 ## Location ratings and *metrics* - sound volume, cost, free wifi?, 
 ## Enable study room cohosting
 ## Alert me about things my friends are doing #FOMO
