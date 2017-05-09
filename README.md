@@ -23,16 +23,16 @@ Study Room SHOW: - KYLE
 # Should not display join button or attendees if user is not signed in
 Study Room Create: - KYLE
 # Should handle category creation and location creation if not found
-Location Index: - GABY
+Location Index: - GABY - DONE
 # Should be able to click on all study locations
-Location Show: - GABY
+Location Show: - GABY - DONE
 # Should be able to see list of students who have been here
 # Should show upcoming study rooms
 # Should show categories studied at location
 User Index:
 # Should show user link list, with *stretch* top location and topic of study
 User Show:
-# Should show individual locations, categories for user.
+# Should show individual locations, categories for user. - DONE Marianna and Maxwell
 Categories Show:
 # Should show students who are studying this category.
 Application Layout:
