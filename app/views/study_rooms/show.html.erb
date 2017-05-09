@@ -1,0 +1,9 @@
+<h3> <%= @study_room.name %>  </h3>
+
+<ul>
+  <li> <p> <b> Category: </b> <%= @study_room.category.name  %> </p> </li>
+  <li> <p> <b> Location: </b> <%= @study_room.location.name  %> </p> </li>
+  <li> <p> <b> Starting Time: </b> <%= @study_room.start_time.strftime("%A, %B %d %I:%M %p")  %> </p> </li>
+  <li> <p> <b> Duration: </b> <%= @study_room.end_time.hour -  @study_room.start_time.hour %> hour</p> </li>
+</ul>
+<br>
