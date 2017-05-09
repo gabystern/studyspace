@@ -1,5 +1,6 @@
 class Location < ApplicationRecord
   has_many :study_rooms
+  has_many :ratings
 
 
   def self.find_or_create(user_inputs)
@@ -39,6 +40,13 @@ class Location < ApplicationRecord
 
     array.each {|word| count[word] += 1}
     count.sort_by { |k,v| v }.last[0]
+  end
+
+  def avg_rating
+    if self.ratings.length != nil
+      array = self.ratings.collect {|rating| rating.score }
+      array.sum.to_f / array.size
+    end
   end
 
 
