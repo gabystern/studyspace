@@ -8,8 +8,8 @@ class StudyRoom < ApplicationRecord
     self.all.select {|room| room.start_time > Time.now}
   end
 
-    def self.past
+  def self.past
     self.all.select {|room| room.start_time < Time.now}
   end
-  
+
 end
