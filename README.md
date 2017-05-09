@@ -38,7 +38,7 @@ Categories Show:
 Application Layout:
 # Should show link to user profile, website links in top navigation?
 # Should have footer for all pages
-Improved Model SQL methods:
+Improved Model SQL methods: - DONE
 # Study_rooms.upcoming - OK
 # User.first.locations -- should give all locations of user from all study rooms - OK
 # User.first.categories -- should give all categories from all study rooms - OK
