@@ -7,12 +7,11 @@
   <%= f.text_field :name %> <br>
   <br>
   <b> Categories </b> <br>
-  <%= collection_check_boxes(:study_room, :category_id, @categories, :id, :name)  %> <br>
+  <%= f.select :category_id, @categories.collect {|category| [category.name, category.id]}, {include_blank: true} %> <br>
   <br>
 
 
   <%= f.fields_for :category do |c| %>
-    <%= c.check_box :new %>
     <b> Create a new category </b> <br>
     Name <br>
     <%= c.text_field :name %> <br>
@@ -25,15 +24,25 @@
   <br>
 
   <%= f.fields_for :location do |l| %>
-    <%= l.check_box :new %>
     <b> Create a new location </b> <br>
-    name <br>
+    Name <br>
     <%= l.text_field :name %> <br>
-    address <br>
+    Address <br>
     <%= l.text_area :address %> <br>
   <% end %>
-
   <br>
+  <%= f.fields_for :time do |t| %>
+    <b> Date </b> <br>
+    <%= t.date_field :date %> <br>
+    <br>
+    <b> Starting Time </b> <br>
+    <%= t.time_field :start_time, step: 15 %> <br>
+    <br>
+    <b> Duration </b> (in hours) <br>
+    <%= t.number_field :duration, step: 0.25 %> <br>
+  <% end %>
+  <br>
+
   <%= f.submit %>
   <% end %>
 </p>
