@@ -1,0 +1,28 @@
+<h3> Create a New Study Room </h3>
+<br>
+<%= flash[:notice] %>
+<p>
+  <%= form_for (@study_room) do |f| %>
+  <b> Name </b> <br>
+  <%= f.text_field :name %> <br>
+  <br>
+  <b> Categories </b> <br>
+  <br>
+  <%= collection_check_boxes(:study_room, :category_id, @categories, :id, :name)  %> <br>
+  <br>
+  <br>
+  <b> Create a New Category </b> <br>
+  <br>
+  <%= f.fields_for :category do |c| %>
+    Name <br>
+    <%= c.text_field :name %> <br>
+    <br>
+     Description <br>
+    <%= c.text_area :description %> <br>
+  <% end %>
+
+
+  <br>
+  <%= f.submit %>
+  <% end %>
+</p>

@@ -3,6 +3,16 @@
 <% @study_rooms.each do |study_room|  %>
 
 <ul>
-  <li> <%= link_to "Category: #{study_room.category.name}, Location: #{study_room.location.name}", study_room_path(study_room.id) %> </li>
+  <li> <b> <%= link_to study_room.name, study_room_path(study_room.id) %> </b> </li>
+  <p> <b> Study Category: </b> <%= study_room.category.name %> <p>
+  <p> <b> Location: </b> <%= study_room.location.name %> </P>
 </ul>
 <% end %>
+
+
+
+
+<% @categories.each do |category| %>
+  <%= f.label "category_id[]", "#{category.name}" %>
+  <%= f.check_box "category_id[]", value: category.id %> <br>
+<%end%>
