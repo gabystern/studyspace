@@ -29,15 +29,14 @@ Location Show: - GABY - DONE
 # Should be able to see list of students who have been here
 # Should show upcoming study rooms
 # Should show categories studied at location
-User Index:
-# Should show user link list, with *stretch* top location and topic of study
-User Show:
+
+User Index: - DONE
+# Should show user link list
+User Show: - DONE
 # Should show individual locations, categories for user. - DONE Marianna and Maxwell
-Categories Show:
+Categories Show: 
 # Should show students who are studying this category.
-Application Layout:
-# Should show link to user profile, website links in top navigation?
-# Should have footer for all pages
+
 Improved Model SQL methods: - DONE
 # Study_rooms.upcoming - OK
 # User.first.locations -- should give all locations of user from all study rooms - OK
@@ -51,6 +50,11 @@ Improved Model SQL methods: - DONE
 # Category.locations - OK
 # Category.upcoming_study_rooms - filter by current date - OK
 # StudyRoom.past - OK
+
+
+Application Layout:
+# Should show link to user profile, website links in top navigation?
+# Should have footer for all pages
 Specs
 # User login/authentication
 # Study Room creation and editing
