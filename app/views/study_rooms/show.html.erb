@@ -7,3 +7,8 @@
   <li> <p> <b> Duration: </b> <%= @study_room.end_time.hour -  @study_room.start_time.hour %> hour</p> </li>
 </ul>
 <br>
+
+<%=link_to "Back to Study Rooms", study_rooms_path%>
+<%=link_to "See all Users", users_path%>
+<%=link_to "See all Locations", locations_path%>
+<%=link_to "See all Categories", categories_path%>
