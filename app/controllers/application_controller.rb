@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :authorize_user, :current_user, :logged_in?
+  helper_method :authorize_user, :current_user, :logged_in?, :start_time_convert, :end_time_convert
 
 
 private
@@ -18,6 +18,16 @@ private
 
   def logged_in?
     !!session[:user_id]
+  end
+
+  def start_time_convert(time)
+    t = [time[:date], time[:start_time]].join(" ").to_datetime
+    t.strftime("%Y-%m-%d %H:%M:%S")
+  end
+
+  def end_time_convert(time)
+    t = [time[:date], time[:start_time]].join(" ").to_datetime + time[:duration].to_f.hours
+    t.strftime("%Y-%m-%d %H:%M:%S")
   end
 
 end
