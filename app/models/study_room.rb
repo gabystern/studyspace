@@ -7,5 +7,9 @@ class StudyRoom < ApplicationRecord
   def self.upcoming
     self.all.select {|room| room.start_time > Time.now}
   end
+
+    def self.past
+    self.all.select {|room| room.start_time < Time.now}
+  end
   
 end

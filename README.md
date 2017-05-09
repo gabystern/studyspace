@@ -43,13 +43,14 @@ Improved Model SQL methods:
 # User.first.locations -- should give all locations of user from all study rooms - OK
 # User.first.categories -- should give all categories from all study rooms - OK
 # Location.categories - OK
-# Location.top_user
-# Location.top_category
+# Location.top_user - OK
+# Location.top_category - OK
 # Location.upcoming_study_rooms - filter by current date - OK
 # Category.top_user -OK
 # Category.top_location -OK
 # Category.locations - OK 
 # Category.upcoming_study_rooms - filter by current date - OK
+# StudyRoom.past - OK
 Specs
 # User login/authentication
 # Study Room creation and editing
