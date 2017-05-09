@@ -1,0 +1,21 @@
+<h1> Welcome <%= @user.username %>!</h1>
+
+<h2>Here is your list of study rooms:</h2>
+
+<% @user.user_study_rooms.each do |user_study_room| %>
+
+<% if user_study_room.owner == true %>
+  <ul>
+    <li> Hosting: <%= link_to "Let's study #{user_study_room.study_room.category.name} at #{user_study_room.study_room.location.name}!", user_study_room_path(user_study_room) %>
+    </li>
+  </ul>
+
+  <%else%>
+    <ul>
+      <li> Attending: <%= link_to "Let's study #{user_study_room.study_room.category.name} at #{user_study_room.study_room.location.name}!", user_study_room_path(user_study_room) %>
+      </li>
+    </ul>
+  <% end %>
+<% end %>
+
+<%= link_to "Back to all", study_rooms_path %>
