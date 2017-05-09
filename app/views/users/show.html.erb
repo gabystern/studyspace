@@ -1,23 +1,43 @@
 <h1><%= @user.username %>'s Study Page!</h1>
 
-<% if @user.user_study_rooms.empty?%>
+<% if @user.study_rooms.empty?%>
   <h2><%=@user.username%> has no study rooms</h2>
 <%else%>
   <h2>Here is <%=@user.username%>'s list of study rooms:</h2>
-  <% @user.user_study_rooms.each do |user_study_room| %>
+  <%end%>
 
-  <% if user_study_room.owner == true %>
-    <ul>
-      <li> Hosting: <%= link_to "Let's study #{user_study_room.study_room.category.name} at #{user_study_room.study_room.location.name}!", user_study_room_path(user_study_room) %>
-      </li>
-    </ul>
+<%if @user.all_owned.present?%>
+  <h3>Study Rooms <%=@user.username%> is Hosting</h3>
+  <ul>
+  <%@user.all_owned.each do |room|%>
+    <li><%=link_to "#{room.name} - #{room.location.name}, #{room.location.address}", room%></li>
+  <%end%>
+  </ul>
+<%end%>
 
-    <%else%>
-      <ul>
-        <li> Attending: <%= link_to "Let's study #{user_study_room.study_room.category.name} at #{user_study_room.study_room.location.name}!", user_study_room_path(user_study_room) %>
-        </li>
-      </ul>
-    <% end %>
-  <% end %>
+<%if @user.all_unowned.present?%>
+  <h3>Study Rooms <%=@user.username%> is Attending</h3>
+  <ul>
+  <%@user.all_unowned.each do |room|%>
+    <li><%=link_to "#{room.name} - #{room.location.name} - #{room.location.address}", room%></li>
+  <%end%>
+  </ul>
+<%end%>
+
+<%if @user.all_locations.present?%>
+  <h3>All Study Room Locations for <%= @user.username %></h3>
+  <ul>
+    <%@user.all_locations.each do |loc|%>
+      <li><%=link_to "#{loc.name} - #{loc.address}", loc%>
+    <%end%>
+  </ul>
+<%end%>
+<%if @user.all_categories.present?%>
+  <h3>All Study Room Categories for <%= @user.username %></h3>
+  <ul>
+    <%@user.all_categories.each do |cat|%>
+      <li><%=link_to "#{cat.name}", cat%>
+    <%end%>
+  </ul>
 <%end%>
 <%= link_to "Back to all", study_rooms_path %>
