@@ -4,9 +4,9 @@
             <%=hidden_field_tag :user_id, current_user.id%>
             <%=hidden_field_tag :study_room_id, @study_room.id%>
             <% if current_user.study_rooms.include?(@study_room) %>
-              <%=button_tag "Joined", disabled: true%>
+            <a class="waves-effect waves-light btn"><%=button_tag "Joined", disabled: true%></a>
             <% else %>
-              <%=button_tag "Join", data: { disable_with: "You have joined!" } %>
+            <a class="waves-effect waves-light btn"><%=button_tag "Join", data: { disable_with: "You have joined!" } %></a>
             <% end %>
         <%end%>
     </div>

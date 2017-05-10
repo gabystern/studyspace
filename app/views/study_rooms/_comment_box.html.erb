@@ -1,10 +1,11 @@
 <div id="comment_box">
     <div id="new_comment">
         <%=form_tag comments_path do%>
-            <%=text_area_tag :comment%> 
+            <%=text_area_tag :comment%>
             <%=hidden_field_tag :user_id, current_user.id%>
             <%=hidden_field_tag :study_room_id, @study_room.id%>
-            <%=submit_tag "Add Comment"%>
+            <a class="waves-effect waves-light btn"><%=submit_tag "Add Comment"%></a>
+            <i class="material-icons">comment</i>
         <%end%>
     </div>
     <div id="comments">
