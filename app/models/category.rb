@@ -29,7 +29,7 @@ class Category < ApplicationRecord
     count = Hash.new(0)
 
     array.each {|word| count[word] += 1}
-    
+
     if array.empty?
       return []
     else
@@ -47,7 +47,7 @@ class Category < ApplicationRecord
     else
       return count.sort_by { |k,v| v }.last[1]
     end
-    
+
   end
 
   def top_location
@@ -60,19 +60,26 @@ class Category < ApplicationRecord
     else
       count.sort_by { |k,v| v }.last[0]
     end
-    
+
   end
 
   def top_location_event_count
-  array = self.study_rooms.map {|room| room.location}
-  count = Hash.new(0)
+    array = self.study_rooms.map {|room| room.location}
+    count = Hash.new(0)
 
-  array.each {|word| count[word] += 1}
-  if array.empty?
-    return []
-  else
-    count.sort_by { |k,v| v }.last[1]
+    array.each {|word| count[word] += 1}
+    if array.empty?
+      return []
+    else
+      count.sort_by { |k,v| v }.last[1]
+    end
   end
-end
+
+  def self.most_popular
+    array = self.all.group(:name).count.first(3)
+    array.map do |category|
+      Category.find_by(name: category[0])
+    end
+  end
 
 end
