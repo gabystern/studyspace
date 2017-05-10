@@ -1,0 +1,9 @@
+
+
+<h3> Filter by: </h3>
+<%= form_tag(study_rooms_path, :method => "get", id: "search-form") do %>
+
+Location <%= collection_select(:search, :location_id, @locations, :id, :name, include_blank: "All") %>
+Category <%= collection_select(:search, :category_id, @categories, :id, :name, include_blank: "All") %>
+    <%= submit_tag "Filter", :name => nil %>
+<% end %>
