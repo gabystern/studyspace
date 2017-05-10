@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510020555) do
-
+ActiveRecord::Schema.define(version: 20170510113348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,9 +30,26 @@ ActiveRecord::Schema.define(version: 20170510020555) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender"
+    t.integer "receiver"
+  end
+
+  create_table "direct_messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_direct_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_direct_messages_on_user_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.string "address"
+    t.integer "rating"
     t.float "longitude"
     t.float "latitude"
     t.boolean "wifi"

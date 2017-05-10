@@ -1,6 +1,6 @@
 class StudyRoomsController < ApplicationController
-  before_action :authorize_user
-  skip_before_action :authorize_user, only: [:index, :show]
+  # before_action :authorize_user
+  # skip_before_action :authorize_user, only: [:index, :show]
 
 
   def index
@@ -21,7 +21,7 @@ class StudyRoomsController < ApplicationController
     end
 
     if params[:study_room][:category][:name] == ''
-      category_id = params[:study_room][:category]
+      category_id = params[:study_room][:category_id]
     else
       category_id = Category.find_or_create(params[:study_room][:category]).id
     end
@@ -32,8 +32,8 @@ class StudyRoomsController < ApplicationController
                   end_time: end_time_convert(params[:study_room][:time]),
                   category_id: category_id,
                   location_id: location_id)
-
-   redirect_to study_room_path(study_room.id)
+    
+   redirect_to study_room_path(study_room.slug)
    end
     
   def show
