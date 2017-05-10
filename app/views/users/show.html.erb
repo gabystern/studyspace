@@ -10,7 +10,7 @@
   <h3>Study Rooms <%=@user.username%> is Hosting</h3>
   <ul>
   <%@user.all_owned.each do |room|%>
-    <li><%=link_to "#{room.name} - #{room.location.name}, #{room.location.address}", room%></li>
+    <li><%=link_to "#{room.name} - #{room.location.name}, #{room.location.address}", study_room_path(room.slug)%></li>
   <%end%>
   </ul>
 <%end%>
@@ -19,7 +19,7 @@
   <h3>Study Rooms <%=@user.username%> is Attending</h3>
   <ul>
   <%@user.all_unowned.each do |room|%>
-    <li><%=link_to "#{room.name} - #{room.location.name} - #{room.location.address}", room%></li>
+    <li><%=link_to "#{room.name} - #{room.location.name} - #{room.location.address}", study_room_path(room.slug)%></li>
   <%end%>
   </ul>
 <%end%>
@@ -28,7 +28,7 @@
   <h3>All Study Room Locations for <%= @user.username %></h3>
   <ul>
     <%@user.all_locations.each do |loc|%>
-      <li><%=link_to "#{loc.name} - #{loc.address}", loc%>
+      <li><%=link_to "#{loc.name} - #{loc.address}", location_path(loc.slug)%>
     <%end%>
   </ul>
 <%end%>
@@ -36,7 +36,7 @@
   <h3>All Study Room Categories for <%= @user.username %></h3>
   <ul>
     <%@user.all_categories.each do |cat|%>
-      <li><%=link_to "#{cat.name}", cat%>
+      <li><%=link_to "#{cat.name}", category_path(cat.slug)%>
     <%end%>
   </ul>
 <%end%>

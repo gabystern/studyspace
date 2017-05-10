@@ -3,7 +3,7 @@
 <% @study_rooms.each do |study_room|  %>
 
 <ul>
-  <li> <b> <%= link_to study_room.name, study_room_path(study_room.id) %> </b> </li>
+  <li> <b> <%= link_to study_room.name, study_room_path(study_room.slug) %> </b> </li>
   <p> <b> Study Category: </b> <%= study_room.category.name %> <p>
   <p> <b> Location: </b> <%= study_room.location.name %> </P>
 </ul>

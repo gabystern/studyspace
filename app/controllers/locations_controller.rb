@@ -6,7 +6,12 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @location = Location.find(params[:id])
+    if Location.find_by_slug(params[:id])
+      @location = Location.find_by_slug(params[:id])
+    else
+      @location = Location.find(params[:id])
+    end
+    @location
   end
 
 
