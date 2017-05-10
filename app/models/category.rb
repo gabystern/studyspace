@@ -29,7 +29,12 @@ class Category < ApplicationRecord
     count = Hash.new(0)
 
     array.each {|word| count[word] += 1}
-    count.sort_by { |k,v| v }.last[0]
+    
+    if array.empty?
+      return []
+    else
+      return count.sort_by { |k,v| v }.last[0]
+    end
   end
 
   def top_user_event_count
@@ -37,15 +42,25 @@ class Category < ApplicationRecord
     count = Hash.new(0)
 
     array.each {|word| count[word] += 1}
-    count.sort_by { |k,v| v }.last[1]
+    if array.empty?
+      return []
+    else
+      return count.sort_by { |k,v| v }.last[1]
+    end
+    
   end
 
-    def top_location
+  def top_location
     array = self.study_rooms.map {|room| room.location}
     count = Hash.new(0)
 
     array.each {|word| count[word] += 1}
-    count.sort_by { |k,v| v }.last[0]
+    if array.empty?
+      return []
+    else
+      count.sort_by { |k,v| v }.last[0]
+    end
+    
   end
 
   def top_location_event_count
@@ -53,7 +68,11 @@ class Category < ApplicationRecord
   count = Hash.new(0)
 
   array.each {|word| count[word] += 1}
-  count.sort_by { |k,v| v }.last[1]
+  if array.empty?
+    return []
+  else
+    count.sort_by { |k,v| v }.last[1]
+  end
 end
 
 end

@@ -32,7 +32,8 @@ class StudyRoomsController < ApplicationController
                   end_time: end_time_convert(params[:study_room][:time]),
                   category_id: category_id,
                   location_id: location_id)
-    
+   usr = UserStudyRoom.create(user_id: current_user.id, study_room_id: study_room.id, owner: true)
+   
    redirect_to study_room_path(study_room.slug)
    end
     

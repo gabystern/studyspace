@@ -30,18 +30,25 @@ Past Study Rooms Within this Category:
 <p> ----------------------------------------------------------------------------  </p>
 <label>Top User within this Category:
 </label>
-<ul>
-  <li><%=link_to @category.top_user.username, user_path(@category.top_user)%></li>
-  <li>Number of events: <%= @category.top_user_event_count%></li>
-</ul>
-
+<%if !@category.top_user.blank?%>
+  <ul>
+    <li><%=link_to @category.top_user.username, user_path(@category.top_user)%></li>
+    <li>Number of events: <%= @category.top_user_event_count%></li>
+  </ul>
+<%else%>
+  <span>No top user for this category</span>
+<%end%>
  <p> ----------------------------------------------------------------------------  </p>
  <label>Top Location for this Category:
  </label>
+ <%if !@category.top_location.blank?%>
  <ul>
-   <li><%=link_to "#{@category.top_location.name} - #{@category.top_location.address}", user_path(@category.top_user)%></li>
+   <li><%=link_to "#{@category.top_location.name} - #{@category.top_location.address}", location_path(@category.top_location)%></li>
    <li>Number of events: <%= @category.top_location_event_count%></li>
  </ul>
+ <%else%>
+    <span>No top location for this category</span>
+  <%end%>
   <br>
 
 
