@@ -1,11 +1,23 @@
-<h1> Find a Study Category! </h1>
+<div class="row center-align">
+<h2> Find a Study Category! </h2>
+</div>
 
-<ul>
-<%@categories.each do |category| %>
-  <li><%=link_to category.name, category_path(category.slug) %></li>
-<% end %>
-</ul>
+<div class='row'>
 
-<%=link_to "See all Study Rooms", study_rooms_path%>
-<%=link_to "See all Users", users_path%>
-<%=link_to "See all Locations", locations_path%>
+  <%@categories.each do |category| %>
+    <div class='col s12 m3 center-align'>
+      <div class='card white darken-1 hoverable'>
+        <div class='card-content'>
+          <span class='card-title'><%=link_to category.name, category_path(category.slug)%></span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+<div class ='row center-align'>
+  <div class = "col s4"><%=link_to "See all Study Rooms", study_rooms_path%></div>
+  <div class = "col s4"><%=link_to "See all Users", users_path%></div>
+  <div class = "col s4"><%=link_to "See all Locations", locations_path%></div>
+</div>

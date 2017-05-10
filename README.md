@@ -38,6 +38,10 @@ Categories Show: - MARIANNA
 # Should show students who are studying this category.
 Search / Reputations
 
+Last steps to skateboard:
+# Adding navigation with Home/Study Rooms/Create   Categories/Locations/User   Log In - Log Out
+# 
+
 
 Improved Model SQL methods: - DONE
 # Study_rooms.upcoming - OK
