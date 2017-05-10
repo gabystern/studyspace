@@ -35,10 +35,17 @@ class StudyRoomsController < ApplicationController
 
    redirect_to study_room_path(study_room.id)
    end
-
+    
   def show
-    @study_room = StudyRoom.find(params[:id])
+    
+    if StudyRoom.find_by_slug(params[:id])
+      @study_room = StudyRoom.find_by_slug(params[:id])
+    else
+      @study_room = StudyRoom.find(params[:id])
+    end
+    @study_room
   end
+  
 
   private
 

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :username, :password, presence: true
   has_many :user_study_rooms
+  has_many :user_friends
   has_many :study_rooms, through: :user_study_rooms
 
   def all_locations
@@ -21,5 +22,8 @@ class User < ApplicationRecord
     self.user_study_rooms.select {|ur| ur.owner == false}.map {|r| r.study_room}.uniq
   end
   
+  def slug
+      self.username.downcase.gsub(/ /,"-")
+  end
   
 end
