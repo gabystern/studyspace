@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+
 
 
   resources :comments
@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   resources :locations
   resources :study_rooms
   resources :users
-  
-  
+
   get 'sessions/new' => 'sessions#new', as: 'login'
   post 'sessions/new' => 'sessions#create'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
+  root to: 'welcome#index'
+
 
   # get 'users/new' => 'users#new'
   # post 'users' => 'users#create'
