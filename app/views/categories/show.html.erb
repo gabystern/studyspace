@@ -1,1 +1,49 @@
-category
+<h1><%= @category.name %> </h1>
+<p><%= @category.description %> </p>
+
+<p> ----------------------------------------------------------------------------  </p>
+
+Upcoming Study Rooms Within this Category:
+<ul>
+  <% if @category.upcoming.empty? %>
+    No upcoming study rooms within this category. Be the first!
+  <% else %>
+    <% @category.upcoming.each do |room| %>
+      <li> <%= link_to "#{room.name} - #{room.start_time}", study_room_path(room.slug)%> </li>
+    <% end %>
+  <% end %>
+</ul>
+
+----------------------------------------------------------------------------  </p>
+
+Past Study Rooms Within this Category:
+<ul>
+  <% if @category.past.empty? %>
+    No past events within this category.
+  <% else %>
+    <% @category.past.each do |room| %>
+      <li> <%= link_to "#{room.name} - #{room.start_time}", study_room_path(room.slug)%> </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<p> ----------------------------------------------------------------------------  </p>
+<label>Top User within this Category:
+</label>
+<ul>
+  <li><%=link_to @category.top_user.username, user_path(@category.top_user)%></li>
+  <li>Number of events: <%= @category.top_user_event_count%></li>
+</ul>
+
+ <p> ----------------------------------------------------------------------------  </p>
+ <label>Top Location for this Category:
+ </label>
+ <ul>
+   <li><%=link_to "#{@category.top_location.name} - #{@category.top_location.address}", user_path(@category.top_user)%></li>
+   <li>Number of events: <%= @category.top_location_event_count%></li>
+ </ul>
+  <br>
+
+
+
+<%= link_to "Back to All categories", categories_path %>
