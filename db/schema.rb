@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20170510020555) do
     t.boolean "wifi"
     t.string "volume"
     t.integer "capacity"
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

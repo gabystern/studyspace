@@ -1,0 +1,11 @@
+<h3> Create a New Location </h3>
+
+<%= form_for @location do |l| %>
+  <b> Create a new location </b> <br> <br>
+  Name <%= l.text_field :name %> <br> <br>
+  Address <%= l.text_area :address %> <br> <br>
+  Wifi <%= l.check_box :wifi, {}, "true", "false" %> <br> <br>
+  Available spots <%= l.number_field :capacity, min: 1 %> <br> <br>
+  Volume at location <%= l.text_field :volume %> <br> <br>
+  <%= l.submit %>
+<% end %>

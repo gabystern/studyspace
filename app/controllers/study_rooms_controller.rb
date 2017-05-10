@@ -1,6 +1,6 @@
 class StudyRoomsController < ApplicationController
-  # before_action :authorize_user
-  # skip_before_action :authorize_user, only: [:index, :show]
+  before_action :authorize_user
+  skip_before_action :authorize_user, only: [:index, :show]
 
 
   def index
@@ -45,6 +45,13 @@ class StudyRoomsController < ApplicationController
     @study_room
   end
   
+
+  def edit
+    @study_room = StudyRoom.find(params[:id])
+    @locations = Location.all
+    @categories = Category.all
+
+  end
 
   private
 

@@ -7,7 +7,12 @@ class Location < ApplicationRecord
     if location = Location.find_by(name: user_inputs[:name])
       return location
     end
-    Location.create(name: user_inputs[:name], address: user_inputs[:address])
+    Location.create(
+      name: user_inputs[:name],
+      address: user_inputs[:address],
+      wifi: user_inputs[:wifi],
+      capacity: user_inputs[:capacity],
+      volume: user_inputs[:volume])
   end
 
   def categories
