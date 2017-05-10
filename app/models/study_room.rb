@@ -12,4 +12,6 @@ class StudyRoom < ApplicationRecord
     self.all.select {|room| room.start_time < Time.now}
   end
 
+
+
 end

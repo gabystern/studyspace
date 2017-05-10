@@ -31,7 +31,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    
+    if User.find_by_slug(params[:id])
+      @user = User.find_by_slug(params[:id])
+    else
+      @user = User.find(params[:id])
+    end
+    @user
   end
 
   private
