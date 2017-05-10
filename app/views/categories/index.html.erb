@@ -1,0 +1,11 @@
+<h1> Find a Study Category! </h1>
+
+<ul>
+<%@categories.each do |category| %>
+  <li><%=link_to category.name, category_path(category.slug) %></li>
+<% end %>
+</ul>
+
+<%=link_to "See all Study Rooms", study_rooms_path%>
+<%=link_to "See all Users", users_path%>
+<%=link_to "See all Locations", locations_path%>
