@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :searches
   resources :comments
 
   resources :user_friends

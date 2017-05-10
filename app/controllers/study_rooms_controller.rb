@@ -1,10 +1,15 @@
 class StudyRoomsController < ApplicationController
-  # before_action :authorize_user
-  # skip_before_action :authorize_user, only: [:index, :show]
-
+  before_action :authorize_user
+  skip_before_action :authorize_user, only: [:index, :show]
 
   def index
-    @study_rooms = StudyRoom.all
+    if !params[:search]
+      @study_rooms = StudyRoom.all
+    else
+      @study_rooms = StudyRoom.location(params[:search][:location_id]).category(params[:search][:category_id])
+    end
+    @categories = Category.all
+    @locations = Location.all
   end
 
   def new
@@ -32,10 +37,10 @@ class StudyRoomsController < ApplicationController
                   end_time: end_time_convert(params[:study_room][:time]),
                   category_id: category_id,
                   location_id: location_id)
-    
+
    redirect_to study_room_path(study_room.slug)
    end
-    
+
   def show
     if StudyRoom.find_by_slug(params[:id])
       @study_room = StudyRoom.find_by_slug(params[:id])
@@ -44,7 +49,7 @@ class StudyRoomsController < ApplicationController
     end
     @study_room
   end
-  
+
 
   def edit
     @study_room = StudyRoom.find(params[:id])
