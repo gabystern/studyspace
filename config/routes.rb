@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
 
 
+
+  resources :comments
+
+  resources :user_friends
+
   resources :user_study_rooms
   resources :categories
   resources :locations

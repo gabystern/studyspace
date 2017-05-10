@@ -1,5 +1,10 @@
 <h1><%= @location.name %> </h1>
 <p>Address: <%= @location.address %> </p>
+<p>Average Rating: <%= @location.avg_rating %> </p>
+<p>Capacity: <%= @location.capacity %> </p>
+<p>Wifi: <%= @location.wifi %> </p>
+<p>Volume: <%= @location.volume %> </p>
+
 
 <p> ----------------------------------------------------------------------------  </p>
 
@@ -9,7 +14,7 @@ Upcoming Study Rooms:
     No one plans to study here yet. Be the first!
   <% else %>
     <% @location.upcoming.each do |room| %>
-      <li> <%= link_to "#{room.name} - #{room.start_time}"%> </li>
+      <li> <%= link_to "#{room.name} - #{room.start_time}", study_room_path(room.slug)%> </li>
     <% end %>
   <% end %>
 </ul>
@@ -20,7 +25,7 @@ Past Study Rooms:
     No one has previously studied here.
   <% else %>
     <% @location.past.each do |room| %>
-      <li> <%= link_to "#{room.name} - #{room.start_time}"%> </li>
+      <li> <%= link_to "#{room.name} - #{room.start_time}, study_room_path(room.slug)"%> </li>
     <% end %>
   <% end %>
 </ul>
@@ -33,7 +38,7 @@ Types of Study Rooms Held Here:
       None yet...
     <% else %>
   <% @location.categories.each do |category| %>
-    <li><%= link_to category.name, category_path(category) %> </li>
+    <li><%= link_to category.name, category_path(category.slug) %> </li>
   <% end %>
 <% end %>
 </ul>
@@ -46,7 +51,7 @@ Connect with other people who have studied here
       Start the trend and be the first!
     <% else %>
   <% @location.users.each do |user| %>
-    <li><%= link_to user.username, user_path(user) %> </li>
+    <li><%= link_to user.username, user_path(user.slug) %> </li>
   <% end %>
 <% end %>
 </ul>
@@ -55,6 +60,3 @@ Connect with other people who have studied here
 <br>
 
 <%= link_to "Back to All Locations", locations_path %>
-<%=link_to "See all Study Rooms", study_rooms_path%>
-<%=link_to "See all Users", users_path%>
-<%=link_to "See all Categories", categories_path%>

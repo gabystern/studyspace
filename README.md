@@ -16,7 +16,7 @@ Study Room Index:
 # Should be able to create new study room
 # Should not display create button if user is not signed in
 # Study rooms should be separated maybe? Card/box (div) type organization with clickable join
-Study Room SHOW: - KYLE
+Study Room SHOW: - KYLE/GABY
 # Should be able to show all attendees, the location.  
 # Should be able to edit/delete if owner boolean is triggered.
 # Should be able to join with button as student
@@ -34,7 +34,7 @@ User Index: - DONE
 # Should show user link list
 User Show: - DONE
 # Should show individual locations, categories for user. - DONE Marianna and Maxwell
-Categories Show: 
+Categories Show: - GABY
 # Should show students who are studying this category.
 
 Improved Model SQL methods: - DONE
@@ -51,8 +51,10 @@ Improved Model SQL methods: - DONE
 # Category.upcoming_study_rooms - filter by current date - OK
 # StudyRoom.past - OK
 
-
-Application Layout:
+More Validation
+# Rating within 1-5
+# 
+Application Layout: - MARIANNA
 # Should show link to user profile, website links in top navigation?
 # Should have footer for all pages
 Specs
@@ -72,9 +74,9 @@ CSS/Design
 ## Location maps (http://www.rubygeocoder.com/)
 ## Users can message friends
 ## Users can create study room from current location automatically.
-## Stubbing url with study room name
+++## Slugging url with study room name
 ## Suggest friends who are in similar locations/categories
-## Location ratings and *metrics* - sound volume, cost, free wifi?,
+++## Location ratings and *metrics* - sound volume, cost, free wifi?,
 ## Enable study room cohosting
 ## Alert me about things my friends are doing #FOMO
 ## Users can post comments in the study room
