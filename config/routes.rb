@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'sessions/new' => 'sessions#new', as: 'login'
   post 'sessions/new' => 'sessions#create'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
+  delete 'user_study_rooms', to: 'user_study_rooms#destroy', as: 'leave'
   root to: 'welcome#index'
 
 
