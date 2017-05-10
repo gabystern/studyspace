@@ -1,43 +1,68 @@
-<h1><%= @user.username %>'s Study Page!</h1>
+<div class='row center-align'><h2><%= @user.username %>'s Study Page!</h2></div>
 
-<% if @user.study_rooms.empty?%>
-  <h2><%=@user.username%> has no study rooms</h2>
-<%else%>
-  <h2>Here is <%=@user.username%>'s list of study rooms:</h2>
-  <%end%>
+<div class='row'>
+  <div class='col s12 m4 center-align grey'>|<%=@user.bio%></div>
+  <div class='col s12 m4 center-align white'>|</div>
+  <div class='col s12 m4 center-align grey'>|</div>
+</div>
 
-<%if @user.all_owned.present?%>
-  <h3>Study Rooms <%=@user.username%> is Hosting</h3>
-  <ul>
-  <%@user.all_owned.each do |room|%>
-    <li><%=link_to "#{room.name} - #{room.location.name}, #{room.location.address}", study_room_path(room.slug)%></li>
-  <%end%>
-  </ul>
-<%end%>
+<div class='row'>
+<div class='col s12 m4 left-align'><h4>Hosting</h4></div>
+<div class='col s12 m4 center-align'><h4>Map</h4></div>
+<div class='col s12 m4 right-align'><h4>Locations</h4></div>
+</div>
 
-<%if @user.all_unowned.present?%>
-  <h3>Study Rooms <%=@user.username%> is Attending</h3>
-  <ul>
-  <%@user.all_unowned.each do |room|%>
-    <li><%=link_to "#{room.name} - #{room.location.name} - #{room.location.address}", study_room_path(room.slug)%></li>
-  <%end%>
-  </ul>
-<%end%>
-
-<%if @user.all_locations.present?%>
-  <h3>All Study Room Locations for <%= @user.username %></h3>
-  <ul>
-    <%@user.all_locations.each do |loc|%>
-      <li><%=link_to "#{loc.name} - #{loc.address}", location_path(loc.slug)%>
+<div class='row'>
+  <div class='col s12 m4 card section'>
+    <%if @user.all_owned.present?%>
+      
+      <%@user.all_owned.each do |room|%>
+        <h5><%=link_to "#{room.name}", study_room_path(room.slug)%></h5>
+        <span><%=link_to "#{room.location.name}, #{room.location.address}", study_room_path(room.slug)%></span><br>
+      <%end%>
+      
     <%end%>
-  </ul>
-<%end%>
-<%if @user.all_categories.present?%>
-  <h3>All Study Room Categories for <%= @user.username %></h3>
-  <ul>
-    <%@user.all_categories.each do |cat|%>
-      <li><%=link_to "#{cat.name}", category_path(cat.slug)%>
+  </div>
+  <div class="col s12 m4 card grey section"><img src="https://wploop.com/app/wp-content/uploads/2016/07/static-maps.gif"></div>
+  <div class="col s12 m4 card section right-align">
+    <%@user.all_locations.each do |location|%>
+      <h5><%=link_to "#{location.name}", location_path(location.slug)%></h5>
+      <span><%=link_to "#{location.address}", location_path(location.slug)%></span><br>
     <%end%>
-  </ul>
-<%end%>
+  </div>
+</div>
+<div class='row'>
+<div class='col s12 m4 left-align'><h4>Attending</h4></div>
+<div class='col s12 m8 right-align'><h4>Categories</h4></div>
+</div>
+<div class='row'>
+  <div class='col s12 m4 card section'>
+    <%if @user.all_unowned.present?%>
+      
+        <%@user.all_unowned.each do |room|%>
+          <h5><%=link_to "#{room.name}", study_room_path(room.slug)%></h5>
+          <span><%=link_to "#{room.location.name} - #{room.location.address}", study_room_path(room.slug)%></span><br>
+        
+        <%end%>
+      
+    <%end%>
+  </div>
+    <div class='center-align'>
+    <div class='col s8 m8 card center-align'>
+      <%if @user.all_categories.present?%>
+    
+        
+          <%@user.all_categories.each do |cat|%>
+          
+          
+            <span><%=link_to "#{cat.name}", category_path(cat.slug)%></span>
+          
+          <%end%>
+        
+      <%end%>
+      </div>
+    </div>
+  
+</div>
+
 <%= link_to "Back to all", study_rooms_path %>
