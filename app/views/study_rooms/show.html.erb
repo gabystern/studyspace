@@ -8,8 +8,32 @@
 </ul>
 <br>
 
+<div id="hosts">
+  <%if !@study_room.users.blank?%>
+    <h3>Hosts:</h3>
+    <%@study_room.user_study_rooms.each do |usr|%>
+      <%if usr.owner == true%>
+        <span><%=link_to usr.user.username, user_path(usr.user.slug)%></span><br>
+      <%end%>
+    <%end%>
+  <%else%>
+    <h3>No host currently</h3>
+  <%end%>
+</div>
+<div id="attendees">
+  <%if !@study_room.users.blank?%>
+    <h3>Attendees:</h3>
+    <%@study_room.users.each do |user|%>
+      <span><%=link_to user.username, user_path(user.slug)%></span><br>
+    <%end%>
+  <%else%>
+    <h3>No one currently attending</h3>
+  <%end%>
+</div>
+<div>
+<br>
 <%=render 'comment_box'%>
-
+</div>
 <%=link_to "Back to Study Rooms", study_rooms_path%>
 <%=link_to "See all Users", users_path%>
 <%=link_to "See all Locations", locations_path%>
