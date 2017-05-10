@@ -4,8 +4,8 @@
 
 <ul>
   <li> <b> <%= link_to study_room.name, study_room_path(study_room.slug) %> </b> </li>
-  <p> <b> Study Category: </b> <%= study_room.category.name %> <p>
-  <p> <b> Location: </b> <%= study_room.location.name %> </P>
+  <p> <b> Study Category: </b> <%= link_to study_room.category.name, category_path(study_room.category.slug) %> <p>
+  <p> <b> Location: </b> <%= link_to study_room.location.name, location_path(study_room.location.slug) %> </P>
 </ul>
 <% end %>
 

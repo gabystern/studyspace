@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       if params[:user][:password] == params[:user][:password_confirmation]
         @user.save
         session[:user_id] = @user.id
-        redirect_to user_path(@user)
+        redirect_to user_path(@user.slug)
       else
         flash[:notice] = "Your password does not match. Please try again."
         render :new
