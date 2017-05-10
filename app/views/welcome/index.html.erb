@@ -1,3 +1,37 @@
-<h1>Welcome to Study Space!</h1>
-
-<%= link_to "#{current_user.username}'s Page", user_path(current_user) %>
+<body>
+       <img class='img center-align' width = "1000" src="https://cdn-images-1.medium.com/max/1280/1*r02q17GGCoyh3JyjNnqoDA.png">
+    <div class="container">
+       <div class='center-align'><h2>Welcome to Study Space!</h2> </div>
+    <div class="divider"></div>
+     <div class="section">
+      <p> Popular Locations </p>
+    <div class ="row">
+      <% Location.most_popular.each do |location| %>
+        <div class='col s4 center-align'>
+          <div class='card white darken-1 hoverable'>
+            <div class='card-content'>
+              <span class='card-title'><%=link_to location.name, location_path(location.slug)%></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="section">
+      <p> Popular Categories </p>
+    <div class ="row">
+      <% Category.most_popular.each do |category| %>
+        <div class='col s4 center-align'>
+          <div class='card white darken-1 hoverable'>
+            <div class='card-content'>
+              <span class='card-title'><%=link_to category.name, category_path(category.slug)%></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+       <%= link_to "#{current_user.username}'s Page", user_path(current_user) %>
+     </div>
+</body>

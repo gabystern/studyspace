@@ -14,5 +14,4 @@ class StudyRoom < ApplicationRecord
   end
 
 
-
 end

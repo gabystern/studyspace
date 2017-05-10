@@ -54,5 +54,12 @@ class Location < ApplicationRecord
     end
   end
 
+  def self.most_popular
+    array = self.all.group(:address).count.first(3)
+    array.map do |location|
+      Location.find_by(address: location[0])
+    end
+  end
+
 
 end
