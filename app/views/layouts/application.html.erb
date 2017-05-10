@@ -9,15 +9,18 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-      <%= render 'layouts/messages' %>
-      <%= yield %>
-    </main>
-    <footer></footer>
-
+    <div class='container'>
+      <div class='row'>
+      <header>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <%= render 'layouts/navigation' %>
+      </header>
+      </div>
+      <main role="main">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </main>
+      <footer></footer>
+    </div>
   </body>
 </html>

@@ -11,17 +11,17 @@
 
 
 ## To skateboard
-Study Room Index:
+Study Room Index: - AFTER LECTURE
 # Should be able to link to any study room, related location and owner.
-# Should be able to create new study room
-# Should not display create button if user is not signed in
-# Study rooms should be separated maybe? Card/box (div) type organization with clickable join
+-# Should be able to create new study room - nav bar
+-# Should not display create button if user is not signed in
+-# Study rooms should be separated maybe? Card/box (div) type organization with clickable join
 Study Room SHOW: - KYLE/GABY
 # Should be able to show all attendees, the location.  
-# Should be able to edit/delete if owner boolean is triggered.
-# Should be able to join with button as student
-# Should not display join button or attendees if user is not signed in
-Study Room Create: - KYLE
+-# Should be able to edit/delete if owner boolean is triggered.
+-# Should be able to join with button as student  
+-# Should not display join button or attendees if user is not signed in
+Study Room Create: - KYLE - DONE
 # Should handle category creation and location creation if not found
 Location Index: - GABY - DONE
 # Should be able to click on all study locations
@@ -34,8 +34,14 @@ User Index: - DONE
 # Should show user link list
 User Show: - DONE
 # Should show individual locations, categories for user. - DONE Marianna and Maxwell
-Categories Show: - GABY
+Categories Show: - MARIANNA
 # Should show students who are studying this category.
+Search / Reputations
+
+Last steps to skateboard:
+# Adding navigation with Home/Study Rooms/Create   Categories/Locations/User   Log In - Log Out
+# 
+
 
 Improved Model SQL methods: - DONE
 # Study_rooms.upcoming - OK

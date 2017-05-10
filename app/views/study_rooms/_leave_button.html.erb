@@ -1,0 +1,14 @@
+<div id="leave_button">
+    <div id="leave">
+        <%=form_tag user_study_rooms_path do%>
+            <%=hidden_field_tag :user_id, current_user.id%>
+            <%=hidden_field_tag :study_room_id, @study_room.id%>
+            <% if current_user.study_rooms.include?(@study_room) %>
+            <a class="waves-effect waves-light btn"><%= button_to "Leave", { controller: :user_study_rooms, :action => 'destroy', id: current_user.user_study_rooms.find_by(study_room_id: @study_room.id)}, method: :delete, data: { disable_with: "You left" } %></a>
+
+            <% else %>
+            <a class="waves-effect waves-light btn"><%=button_tag "Leave", disabled: true %></a>              
+            <% end %>
+        <%end%>
+    </div>
+</div>

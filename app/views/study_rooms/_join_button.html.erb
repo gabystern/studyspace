@@ -1,0 +1,13 @@
+<div id="join_button">
+    <div id="join">
+        <%=form_tag user_study_rooms_path do%>
+            <%=hidden_field_tag :user_id, current_user.id%>
+            <%=hidden_field_tag :study_room_id, @study_room.id%>
+            <% if current_user.study_rooms.include?(@study_room) %>
+            <a class="waves-effect waves-light btn"><%=button_tag "Joined", disabled: true%></a>
+            <% else %>
+            <a class="waves-effect waves-light btn"><%=button_tag "Join", data: { disable_with: "You have joined!" } %></a>
+            <% end %>
+        <%end%>
+    </div>
+</div>
