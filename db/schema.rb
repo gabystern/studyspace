@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20170508222620) do
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.string "address"
+    t.integer "rating"
+    t.float "longitude"
+    t.float "latitude"
+    t.boolean "wifi"
+    t.string "volume"
+    t.integer "capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,6 +40,8 @@ ActiveRecord::Schema.define(version: 20170508222620) do
     t.integer "category_id"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.boolean "active", default: true
+    t.integer "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
@@ -50,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170508222620) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
+    t.string "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
