@@ -8,6 +8,14 @@
 </ul>
 <br>
 
+<div id="join_or_leave">
+  <% if current_user.study_rooms.include?(@study_room)%>
+    <%=render 'leave_button'%>
+  <% else %>
+    <%=render 'join_button'%>
+  <% end %>
+</div>
+
 <%=render 'comment_box'%>
 
 <%=link_to "Back to Study Rooms", study_rooms_path%>
