@@ -37,7 +37,6 @@ class StudyRoomsController < ApplicationController
    end
     
   def show
-    
     if StudyRoom.find_by_slug(params[:id])
       @study_room = StudyRoom.find_by_slug(params[:id])
     else
