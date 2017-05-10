@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   
 
-<<<<<<< HEAD
+
   resources :comments
-=======
+
   resources :user_friends
->>>>>>> stubbing
+
   resources :user_study_rooms
   resources :categories
   resources :locations
