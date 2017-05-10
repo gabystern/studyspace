@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :username, :password, presence: true
   has_many :user_study_rooms
+  has_many :comments
   has_many :study_rooms, through: :user_study_rooms
 
   def all_locations

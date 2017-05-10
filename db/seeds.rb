@@ -41,3 +41,8 @@ UserStudyRoom.create(user_id: 1, study_room_id: 3, owner: true)
 UserStudyRoom.create(user_id: 1, study_room_id: 4, owner: true)
 UserStudyRoom.create(user_id: 1, study_room_id: 3, owner: true)
 UserStudyRoom.create(user_id: 1, study_room_id: 5, owner: true)
+
+Comment.create(user_id: 1, study_room_id: 1, comment: "Hey, I'm bringing snacks if anyone wants.")
+Comment.create(user_id: 2, study_room_id: 1, comment: "Sure but only if they are Bugles and Capri Sun.")
+Comment.create(user_id: 1, study_room_id: 1, comment: "No.")
+Comment.create(user_id: 1, study_room_id: 2, comment: "Snacks are the best snacks.")
