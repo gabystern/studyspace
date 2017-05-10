@@ -2,11 +2,17 @@ Rails.application.routes.draw do
 
   
 
+
+  resources :comments
+
+  resources :user_friends
+
   resources :user_study_rooms
   resources :categories
   resources :locations
   resources :study_rooms
   resources :users
+  
   
   get 'sessions/new' => 'sessions#new', as: 'login'
   post 'sessions/new' => 'sessions#create'
