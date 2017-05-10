@@ -74,7 +74,7 @@ CSS/Design
 ## Location maps (http://www.rubygeocoder.com/)
 ## Users can message friends
 ## Users can create study room from current location automatically.
-## Stubbing url with study room name
+++## Slugging url with study room name
 ## Suggest friends who are in similar locations/categories
 ++## Location ratings and *metrics* - sound volume, cost, free wifi?,
 ## Enable study room cohosting
