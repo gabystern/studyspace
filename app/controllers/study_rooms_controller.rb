@@ -1,6 +1,6 @@
 class StudyRoomsController < ApplicationController
   before_action :authorize_user
-  skip_before_action :authorize_user, only: [:index, :show]
+  skip_before_action :authorize_user, only: [:index]
 
   def index
     if !params[:search]

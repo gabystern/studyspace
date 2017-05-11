@@ -7,6 +7,7 @@
   </div>
 </div>
 
+
 <div class="col s8">
   <div class="card">
     <div class="card-image-medium">
@@ -14,19 +15,23 @@
     </div>
     <div class="card-stacked">
       <div class="card-content">
-         <p>Category: <%= link_to @study_room.category.name, category_path(@study_room.category.slug)  %> </p>
-         <p>Location: <%= link_to @study_room.location.name, location_path(@study_room.location.slug)  %> </p>
-         <p>Starting Time: <%= @study_room.start_time.strftime("%A, %B %d %I:%M %p")  %> </p>
-         <p>Duration: <%= @study_room.end_time.hour -  @study_room.start_time.hour %> hour</p>
-         <p>Hosts:
+        <ul>
+          <li> <p> <b> Category: </b> <%= link_to @study_room.category.name, category_path(@study_room.category.slug)  %> </p> </li>
+          <li> <p> <b> Location: </b> <%= link_to @study_room.location.name, location_path(@study_room.location.slug)  %> </p> </li>
+          <li> <p> <b> Starting Time: </b> <%= @study_room.start_time.strftime("%A, %B %d %I:%M %p")  %> </p> </li>
+          <li> <p> <b> Duration: </b> <%= @study_room.end_time.hour -  @study_room.start_time.hour %> hour</p> </li>
+          <li> <p> <b> Hosts: </b>
             <%if !@study_room.users.blank?%>
               <%@study_room.user_study_rooms.each do |usr|%>
+              
                 <%if usr.owner == true%>
                   <span><%=link_to usr.user.username, user_path(usr.user.slug)%></span>
                 <%end%>
               <%end%>
-            <%else%> No host currently
+            <%else%>
+              <h3>No host currently</h3>
             <%end%></p> </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -40,7 +45,7 @@
                   <span><%=link_to user.username, user_path(user.slug)%></span><br>
                 <%end%>
               <%else%>
-                <p class='center-align'>No one currently attending</p>
+                <h3>No one currently attending</h3>
               <%end%>
             </div>
           </div>
@@ -48,22 +53,23 @@
 
 <div>
   <div id="join_or_leave" class="center-align">
-    <% if current_user == nil %>
-      <%= redirect_to login_path %>
-    <% elsif current_user.study_rooms.include?(@study_room)%>
+    <% if current_user.study_rooms.include?(@study_room)%>
       <%=render 'leave_button'%>
     <% else %>
       <%=render 'join_button'%>
     <% end %>
     <br>
-
     <%if @study_room.owners.include?(current_user)%>
+    
+      
         <div id="edit">
-          <a class="waves-effect waves-light btn" href=<%="/study_rooms/"+@study_room.slug+"/edit"%>>Edit</a>
+          <a class="waves-effect waves-light btn" href=<%="/study_rooms/"+@study_room.slug+"/edit"%>>Edit</a> 
         </div>
+
+    
     <%end%>
   </div>
-
+  
 <%=render 'comment_box'%>
 </div>
 
