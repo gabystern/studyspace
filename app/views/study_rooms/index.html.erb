@@ -1,16 +1,37 @@
-<h3> Available Study Rooms </h3> <%=link_to "Create New Study Room", new_study_room_path, class: "waves-effect waves-light btn"%> 
+<div class="row">
+  <div class="col s12 center-align">
+    <h1> Available Study Rooms </h1>
+  </div>
+</div>
 
-<%= render "search.html" %>
+<div class="row center-align">
+  <div class="col s12">
+    <%=link_to "Create New Study Room", new_study_room_path, class: "waves-effect waves-light btn"%>
+  </div>
+</div>
 
-<% @study_rooms.each do |study_room|  %>
+<div class="row">
+  <% @study_rooms.each do |study_room|  %>
+  <div class="col s6">
+    <div class="card-panel grey lighten-2 hoverable">
+      <ul>
+        <h4 class="center-align"> <b> <%= link_to study_room.name, study_room_path(study_room.slug) %> </b> </h4>
+        <p> <b> Study Category: </b> <%= link_to study_room.category.name, category_path(study_room.category.slug) %> <p>
+        <p> <b> Location: </b> <%= link_to study_room.location.name, location_path(study_room.location.slug) %> </P>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+</div>
 
-<ul>
-  <li> <b> <%= link_to study_room.name, study_room_path(study_room.slug) %> </b> </li>
-  <p> <b> Study Category: </b> <%= link_to study_room.category.name, category_path(study_room.category.slug) %> <p>
-  <p> <b> Location: </b> <%= link_to study_room.location.name, location_path(study_room.location.slug) %> </P>
-</ul>
-<% end %>
-
-<%=link_to "See all Users", users_path%>
-<%=link_to "See all Locations", locations_path%>
-<%=link_to "See all Categories", categories_path%>
+<div class="row center-align">
+  <div class="col s4">
+    <%=link_to "See all Users", users_path%>
+  </div>
+  <div class="col s4">
+    <%=link_to "See all Locations", locations_path%>
+  </div>
+  <div class="col s4">
+    <%=link_to "See all Categories", categories_path%>
+  </div>
+</div>
