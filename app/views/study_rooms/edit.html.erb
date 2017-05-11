@@ -48,39 +48,25 @@
       <div class="row"> <!-- Create a new Category and Create a new Location -->
           <div class="col s6">
 
-              <ul class="collapsible" data-collapsible="accordion">
-              <li>
-                <div class="collapsible-header">
-                 <i class="material-icons">expand_less</i> Add a category </div>
-                 <div class="collapsible-body">
-                   <%= f.fields_for :category do |c| %>
-                     Name  <%= c.text_field :name %> <br> <br>
-                     Description <%= c.text_area :description %> <br> <br>
-                   <% end %>
-                 </div>
-               </li>
-              </ul>
-
+           <b> Add a category </b> <br>
+           <br>
+           <%= f.fields_for :category do |c| %>
+             Name  <%= c.text_field :name %> <br> <br>
+             Description <%= c.text_area :description %> <br> <br>
+           <% end %>
           </div>
 
           <div class="col s6">
 
-            <ul class="collapsible" data-collapsible="accordion">
-              <li>
-                  <div class="collapsible-header">
-                   <i class="material-icons">expand_less</i> Add a location </div>
-                   <div class="collapsible-body">
-                     <%= f.fields_for :location do |l| %>
-                       Name <%= l.text_field :name %> <br> <br>
-                       Address <%= l.text_area :address %> <br> <br>
-                       Wifi <%= l.check_box :wifi, {}, "true", "false" %> <br> <br>
-                       Available spots <%= l.number_field :capacity, min: 1 %> <br> <br>
-                       Volume at location <%= l.text_field :volume %> <br> <br>
-                     <% end %>
-                   </div>
-               </li>
-            </ul>
-
+          <b> Add a location </b> <br>
+          <br>
+           <%= f.fields_for :location do |l| %>
+             Name <%= l.text_field :name %> <br> <br>
+             Address <%= l.text_area :address %> <br> <br>
+             Wifi <%= l.check_box :wifi %> <br> <br>
+             Available spots <%= l.number_field :capacity, min: 1 %> <br> <br>
+             Volume at location <%= l.text_field :volume %> <br> <br>
+           <% end %>
           </div>
 
       </div>
