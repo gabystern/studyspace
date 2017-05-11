@@ -71,3 +71,7 @@ footer.page-footer {
   max-width: 1500px;
   width: 80%;
 }
+
+.d-flex {
+    display:flex;
+}
