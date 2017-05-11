@@ -58,3 +58,10 @@ footer.page-footer {
 #menu {
    font-size: 16px;
 }
+
+.text {
+      padding-top: 10;
+      padding-right: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+}
