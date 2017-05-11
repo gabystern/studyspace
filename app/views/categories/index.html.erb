@@ -1,23 +1,25 @@
-<div class="row center-align">
-<h2> Find a Study Category! </h2>
+<div class="row">
+  <div class="col s12 center-align">
+  <h1> Find a Study Category! </h1>
+  </div>
 </div>
 
-<div class='row'>
+  <div class='row'>
 
-  <%@categories.each do |category| %>
-    <div class='col s12 m3 center-align'>
-      <div class='card white darken-1 hoverable'>
-        <div class='card-content'>
-          <span class='card-title'><%=link_to category.name, category_path(category.slug)%></span>
+    <%@categories.each do |category| %>
+      <div class='col s12 m3 center-align'>
+        <div class='card grey lighten-2 hoverable'>
+          <div class='card-content'>
+            <span class='card-title'><%=link_to category.name, category_path(category.slug)%></span>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-</div>
+  </div>
 
-<div class ='row center-align'>
-  <div class = "col s4"><%=link_to "See all Study Rooms", study_rooms_path%></div>
-  <div class = "col s4"><%=link_to "See all Users", users_path%></div>
-  <div class = "col s4"><%=link_to "See all Locations", locations_path%></div>
-</div>
+  <div class ='row center-align'>
+    <div class = "col s4"><%=link_to "See all Study Rooms", study_rooms_path%></div>
+    <div class = "col s4"><%=link_to "See all Users", users_path%></div>
+    <div class = "col s4"><%=link_to "See all Locations", locations_path%></div>
+  </div>
