@@ -80,7 +80,7 @@ class Location < ApplicationRecord
       marklist = "%7C#{locations.latitude},#{locations.longitude}"
     end
 
-    api = "&key=AIzaSyDrqVfE1a10Yt0yZGSlgUh5EKCtTqI9-2Q"
+    api = "&key=AIzaSyB3F176LCpeD1f-yhcdxLpEIGQawbGQBIU"
     marker.concat(marklist).concat(api)
   end
 
