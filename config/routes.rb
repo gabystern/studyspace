@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy', as: 'logout'
   delete 'user_study_rooms', to: 'user_study_rooms#destroy', as: 'leave'
   root to: 'welcome#index'
+  get '/analytics' => 'welcome#analytics', as: 'analytics'
 
 
   # get 'users/new' => 'users#new'

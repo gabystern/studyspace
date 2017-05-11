@@ -1,7 +1,15 @@
-<h1>All Users</h1>    
+<div class='row center-align'><h2>All Users</h2></div>    
 
-<ul>
+<div class='row'>
 <%@users.each do |user|%>
-    <li><%=link_to user.username, user%></li>
+    <div class='col s3 m3 card center-align'>
+        <div ><%= image_tag "portrait_temp.png", class: "responsive-img" %></div>
+        <div class='name'>
+            <h5><%=link_to user.username, user_path(user.slug)%></h5>
+        </div>
+        <div>
+            <p><%=user.top_category%></p>
+        </div>
+    </div>
 <%end%>
-<ul>
+</div>

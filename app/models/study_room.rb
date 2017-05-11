@@ -16,5 +16,12 @@ class StudyRoom < ApplicationRecord
     self.all.select {|room| room.start_time < Time.now}
   end
 
-
+  def owners
+    self.user_study_rooms.select {|r| r.owner == true}.map {|o| o.user}
+  end
+  
+  def slug
+      self.name.downcase.gsub(/ /,"-")
+  end
+  
 end

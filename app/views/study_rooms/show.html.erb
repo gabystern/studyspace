@@ -10,6 +10,7 @@
 
 
 
+
 <div class="col s12 m8">
   <div class="card">
     <div class="card-image">
@@ -27,6 +28,7 @@
               <%@study_room.user_study_rooms.each do |usr|%>
                 <%if usr.owner == true%>
                   <span><%=link_to usr.user.username, user_path(usr.user.slug)%></span>
+
                 <%end%>
               <%end%>
             <%else%>
@@ -34,10 +36,8 @@
             <%end%></p> </li>
         </ul>
       </div>
-    </div>
-  </div>
-</div>
 
+        <div class="col s12 m3"><img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=300x400&scale=3"+Location.coord_output(@study_room.location)%>></div>
         <div class="col s12 m4">
           <div class="card-panel grey lighten-2">
             <div id="attendees">
@@ -53,14 +53,40 @@
         </div>
 
 <div>
-  <div id="join_or_leave" class="center-align">
+
+<br>
+<div class='row'>
+  <div class='col s2 m2' id="join_or_leave">
+
     <% if current_user.study_rooms.include?(@study_room)%>
       <%=render 'leave_button'%>
     <% else %>
       <%=render 'join_button'%>
     <% end %>
   </div>
+
 <%=render 'comment_box'%>
+
+
+  <%if @study_room.owners.include?(current_user)%>
+    <div class='col s2 m2' id="edit">
+      
+        <div id="edit">
+          <a class="waves-effect waves-light btn" href=<%="/study_rooms/"+@study_room.slug+"/edit"%>>Edit</a> 
+        </div>
+
+      
+    </div>
+    <div class='col s2 m2' id="edit">
+      <div id="add_host">
+          <form action="/user_study_rooms" method="POST">
+            <input type="text" name="username" placeholder="Enter Username"></input>
+            <input class="waves-effect waves-light btn" type="submit"><input class="waves-effect waves-light btn" type="submit">
+          </form>
+      </div>
+    </div>
+  <%end%>
+
 </div>
 
 <br><br>

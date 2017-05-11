@@ -2,6 +2,9 @@ class Location < ApplicationRecord
   has_many :study_rooms
   has_many :ratings
 
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+
 
   def self.find_or_create(user_inputs)
     if location = Location.find_by(name: user_inputs[:name])
@@ -61,5 +64,27 @@ class Location < ApplicationRecord
     end
   end
 
+  def self.ranked
+    array = self.all.group(:address).count
+    array.map do |location|
+      Location.find_by(address: location[0])
+    end
+  end
 
+  def self.coord_output(locations)
+    
+    marker = "&markers=color:blue"
+    if locations.class == Array
+      marklist = locations.map {|loc| "%7C#{loc.latitude},#{loc.longitude}"}.join
+    else
+      marklist = "%7C#{locations.latitude},#{locations.longitude}"
+    end
+    
+    api = "&key=AIzaSyB3F176LCpeD1f-yhcdxLpEIGQawbGQBIU"
+    marker.concat(marklist).concat(api)
+  end
+  
+  def slug
+      self.name.downcase.gsub(/ /,"-")
+  end
 end

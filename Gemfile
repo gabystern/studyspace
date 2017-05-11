@@ -5,7 +5,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
 gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
+
+gem 'geocoder'
+
 gem 'materialize-sass'
 gem 'rspec'
 gem 'rspec-rails'
