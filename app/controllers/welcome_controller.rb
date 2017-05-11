@@ -9,5 +9,5 @@ class WelcomeController < ApplicationController
     @study_rooms = StudyRoom.all
     @categories = Category.all
   end
-  
+
 end

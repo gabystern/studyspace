@@ -1,14 +1,22 @@
 <ul class="nav">
   <nav class="transparent z-depth-0" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" class="brand-logo ">Study Space</a>
+      <a id="logo-container" style="font-size:130%" class="brand-logo ">Study Space</a>
       <ul class="right hide-on-med-and-down">
-        <li id="color"><a href= <%=root_path%> ><i class="material-icons">home</i></a></li>
+        <li><a href= <%=study_rooms_path%> >Study Rooms</a></li>
         <li><a href= <%=locations_path%> >Locations</a></li>
         <li><a href= <%=categories_path%> >Categories</a></li>
         <% if current_user.present? %>
-          <li class="color" ><a href=<%=user_path(current_user)%>>My Profile</a></li>
+          <li><a href=<%=user_path(current_user)%>><i class="material-icons">perm_identity</i></a></li>
         <% end %>
+        <li id="color"><a href= <%=root_path%> ><i class="material-icons">home</i></a></li>
+        <% if current_user.present?%>
+          <li><%= link_to 'Log Out', logout_path, method: 'DELETE' %></li>
+        <% else %>
+          <li><%= link_to "Log In", login_path%></li>
+          <li><%= link_to "Sign Up", new_user_path%></li>
+        <% end %>
+        </div>
       </ul>
     </div>
   </nav>
