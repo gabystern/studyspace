@@ -1,6 +1,7 @@
 class Location < ApplicationRecord
   has_many :study_rooms
   has_many :ratings
+  validates :ratings, :inclusion => {:in => [1,2,3,4,5]}
 
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
@@ -72,18 +73,18 @@ class Location < ApplicationRecord
   end
 
   def self.coord_output(locations)
-    
+
     marker = "&markers=color:blue"
     if locations.class == Array
       marklist = locations.map {|loc| "%7C#{loc.latitude},#{loc.longitude}"}.join
     else
       marklist = "%7C#{locations.latitude},#{locations.longitude}"
     end
-    
+
     api = "&key=AIzaSyB3F176LCpeD1f-yhcdxLpEIGQawbGQBIU"
     marker.concat(marklist).concat(api)
   end
-  
+
   def slug
       self.name.downcase.gsub(/ /,"-")
   end

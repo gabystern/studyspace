@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :username, uniqueness: true
   validates :username, :password, presence: true
+  validates :ratings, :inclusion => {:in => [1,2,3,4,5]}
   has_many :user_study_rooms
   has_many :comments
   has_many :user_friends
@@ -18,7 +19,7 @@ class User < ApplicationRecord
 
   def top_category
     self.study_rooms.map {|room| room.category}.group_by.first.name
-    
+
   end
 
   def all_owned
@@ -29,10 +30,10 @@ class User < ApplicationRecord
     self.user_study_rooms.select {|ur| ur.owner == false}.map {|r| r.study_room}.uniq
   end
 
-  
+
   def slug
       #need to add additional regex
       self.username.downcase.gsub(/ /,"-")
   end
-  
+
 end
