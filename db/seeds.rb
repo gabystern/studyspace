@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Location.create(name: 'Flatiron', address: '11 Broadway', capacity: 10, wifi: true, volume: 3)
-Location.create(name: 'Starbucks', address: '25 Broadway', capacity: 5, wifi: true, volume: 1)
-Location.create(name: 'Central Park', address: '52 Central Park West', capacity: 20, wifi: false , volume: 3)
-Location.create(name: "Joe's Place", address: '34 Broadway', capacity: 4, wifi: true, volume: 2)
+Location.create(name: 'Flatiron', address: '11 Broadway, New York', capacity: 10, wifi: true, volume: 3)
+Location.create(name: 'Starbucks', address: '25 Broadway, New York', capacity: 5, wifi: true, volume: 1)
+Location.create(name: 'Central Park', address: '52 Central Park West, New York', capacity: 20, wifi: false , volume: 3)
+Location.create(name: "Joe's Place", address: '34 Broadway, New York', capacity: 4, wifi: true, volume: 2)
 
 Rating.create(location_id: 1, user_id: 1, score: 4)
 Rating.create(location_id: 1, user_id: 2, score: 3)

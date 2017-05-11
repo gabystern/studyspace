@@ -5,7 +5,7 @@
 <p>Wifi: <%= @location.wifi %> </p>
 <p>Volume: <%= @location.volume %> </p>
 
-
+<img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=300x400&scale=3"+Location.coord_output(@location)%>>
 <p> ----------------------------------------------------------------------------  </p>
 
 Upcoming Study Rooms:

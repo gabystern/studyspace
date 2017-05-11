@@ -16,6 +16,11 @@ class User < ApplicationRecord
     self.study_rooms.map {|room| room.category}.uniq
   end
 
+  def top_category
+    self.study_rooms.map {|room| room.category}.group_by.first.name
+    
+  end
+
   def all_owned
     self.user_study_rooms.select {|ur| ur.owner == true}.map {|r| r.study_room}.uniq
   end

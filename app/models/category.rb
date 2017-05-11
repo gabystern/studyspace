@@ -82,4 +82,7 @@ class Category < ApplicationRecord
     end
   end
 
+  def slug
+      self.name.downcase.gsub(/ /,"-")
+  end
 end

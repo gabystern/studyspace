@@ -30,4 +30,9 @@ private
     t.strftime("%Y-%m-%d %H:%M:%S")
   end
 
+  def api_key
+    "AIzaSyB3F176LCpeD1f-yhcdxLpEIGQawbGQBIU"
+  end
+  
+
 end

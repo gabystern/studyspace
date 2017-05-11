@@ -32,7 +32,7 @@ Past Study Rooms Within this Category:
 </label>
 <%if !@category.top_user.blank?%>
   <ul>
-    <li><%=link_to @category.top_user.username, user_path(@category.top_user)%></li>
+    <li><%=link_to @category.top_user.username, user_path(@category.top_user.slug)%></li>
     <li>Number of events: <%= @category.top_user_event_count%></li>
   </ul>
 <%else%>

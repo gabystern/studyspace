@@ -1,7 +1,8 @@
 class UserStudyRoomsController < ApplicationController
 
   def create
-    @userstudyroom = UserStudyRoom.create(user_id: params[:user_id], study_room_id: params[:study_room_id])
+    @userstudyroom = UserStudyRoom.find_or_create_by(user_id: params[:user_id], study_room_id: params[:study_room_id])
+    
   end
 
   def destroy

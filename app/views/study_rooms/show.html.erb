@@ -9,7 +9,7 @@
 </div>
 
 <div class="row">
-  <div class="col s12 m8">
+  <div class="col s12 m5">
         <div class="card-panel white">
           <ul>
             <li> <p> <b> Category: </b> <%= link_to @study_room.category.name, category_path(@study_room.category.slug)  %> </p> </li>
@@ -29,7 +29,7 @@
           </ul>
         </div>
       </div>
-
+        <div class="col s12 m3"><img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=300x400&scale=3"+Location.coord_output(@study_room.location)%>></div>
         <div class="col s12 m4">
           <div class="card-panel white">
             <div id="attendees">
@@ -46,13 +46,33 @@
       </div>
 <div>
 <br>
+<div class='row'>
+  <div class='col s2 m2' id="join_or_leave">
+    <% if current_user.study_rooms.include?(@study_room)%>
+      <%=render 'leave_button'%>
+    <% else %>
+      <%=render 'join_button'%>
+    <% end %>
+  </div>
 
-<div id="join_or_leave">
-  <% if current_user.study_rooms.include?(@study_room)%>
-    <%=render 'leave_button'%>
-  <% else %>
-    <%=render 'join_button'%>
-  <% end %>
+  <%if @study_room.owners.include?(current_user)%>
+    <div class='col s2 m2' id="edit">
+      
+        <div id="edit">
+          <a class="waves-effect waves-light btn" href=<%="/study_rooms/"+@study_room.slug+"/edit"%>>Edit</a> 
+        </div>
+
+      
+    </div>
+    <div class='col s2 m2' id="edit">
+      <div id="add_host">
+          <form action="/user_study_rooms" method="POST">
+            <input type="text" name="username" placeholder="Enter Username"></input>
+            <input class="waves-effect waves-light btn" type="submit"><input class="waves-effect waves-light btn" type="submit">
+          </form>
+      </div>
+    </div>
+  <%end%>
 </div>
 
 <%=render 'comment_box'%>

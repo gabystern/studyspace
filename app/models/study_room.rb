@@ -5,7 +5,7 @@ class StudyRoom < ApplicationRecord
   has_many :comments
   has_many :users, through: :user_study_rooms
 
-  scope :location, -> (location_id) {where (location_id: location_id) unless location_id == ""}
+  scope :location, -> (location_id) {where location_id: location_id unless location_id == ""}
   scope :category, -> (category_id) {where category_id: category_id unless category_id == ""}
 
   def self.upcoming
@@ -16,5 +16,12 @@ class StudyRoom < ApplicationRecord
     self.all.select {|room| room.start_time < Time.now}
   end
 
-
+  def owners
+    self.user_study_rooms.select {|r| r.owner == true}.map {|o| o.user}
+  end
+  
+  def slug
+      self.name.downcase.gsub(/ /,"-")
+  end
+  
 end
