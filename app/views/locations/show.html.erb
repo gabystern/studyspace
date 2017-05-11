@@ -1,4 +1,4 @@
-<div class="wide-container">
+<div class="container">
 <div class="row center-align">
   <h1><%= @location.name %></h1>
 </div>
@@ -39,7 +39,7 @@
               <% if @location.upcoming.empty? %> No one plans to study here yet. Be the first!
               <% else %>
                 <% @location.upcoming.each do |room| %>
-                  <li> <%= link_to "#{room.name} - #{room.start_time}", study_room_path(room.slug)%> </li>
+                  <li> <%= link_to "#{room.name} - #{room.start_time.strftime("%A, %B %d %I:%M %p")}", study_room_path(room.slug)%> </li>
                 <% end %>
               <% end %>
             </ul>
@@ -53,7 +53,7 @@
               <% if @location.past.empty? %> No one has previously studied here.
               <% else %>
                 <% @location.past.each do |room| %>
-                  <li> <%= link_to "#{room.name} - #{room.start_time}, study_room_path(room.slug)"%> </li>
+                  <li> <%= link_to "#{room.name} - #{room.start_time.strftime("%A, %B %d %I:%M %p")}, study_room_path(room.slug)"%> </li>
                 <% end %>
               <% end %>
             </ul>
