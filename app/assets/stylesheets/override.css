@@ -1,0 +1,63 @@
+.welcome {
+  background-image: url("http://res.cloudinary.com/simpleview/image/upload/v1462196553/clients/houston/13043771_1069140086490571_8619007089763694264_n_8df4ace3-fe9f-4309-993b-11c00c579d11.jpg");
+  height: 90%;
+  width: 100%;
+}
+
+h2 {
+   position: absolute;
+   top: 200px;
+   left: 0;
+   width: 100%;
+   color: white;
+   font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+   font-size: 15px;
+   letter-spacing: -1px;
+   text-align: center;
+}
+
+nav {
+    background-color: white;
+    width: 100%;
+    font-weight: 300;
+    z-index: 1001;
+    overflow: visible!important;
+    color: blue
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+.parallax-container .section {
+  width: 100%;
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
