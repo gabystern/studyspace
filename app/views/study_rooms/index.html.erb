@@ -10,18 +10,20 @@
   </div>
 </div>
 
+<div class="wide-container">
 <div class="row">
   <% @study_rooms.each do |study_room|  %>
-  <div class="col s6">
+  <div class="col s4">
     <div class="card-panel grey lighten-2 hoverable">
       <ul>
-        <h4 class="center-align"> <b> <%= link_to study_room.name, study_room_path(study_room.slug) %> </b> </h4>
+        <h4 class="center-align" style="font-size:160%"> <b> <%= link_to study_room.name, study_room_path(study_room.slug) %> </b> </h4>
         <p> <b> Study Category: </b> <%= link_to study_room.category.name, category_path(study_room.category.slug) %> <p>
         <p> <b> Location: </b> <%= link_to study_room.location.name, location_path(study_room.location.slug) %> </P>
       </ul>
     </div>
   </div>
   <% end %>
+</div>
 </div>
 
 <div class="row center-align">
