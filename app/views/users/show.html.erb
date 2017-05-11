@@ -1,4 +1,5 @@
-<div class='row center-align'><h1><%= @user.username %>'s Study Page!</h1></div>
+<div class="wide-container">
+<div class='row center-align' style="font-size:200%"><%= @user.username %>'s Study Page!</div>
 
 <div class='row'>
   <div class='col s12 center-align'><%=@user.bio%></div>
@@ -11,18 +12,18 @@
 
 <div class='row'>
 
-  <div class='col s12 m4 center-align'><h4 class="center-align">Hosting</h4></div>
-  <div class='col s12 m4 center-align'><h4>Map</h4></div>
-  <div class='col s12 m4 center-align'><h4>Locations</h4></div>
+  <div class='col s4 center-align' class="center-align" style="font-size:140%">Hosting</div>
+  <div class='col s4 center-align' style="font-size:140%">Map</div>
+  <div class='col s4 center-align' style="font-size:140%">Locations</div>
 
 </div>
 <div class='row'>
-  <div class='col s12 m4 card-panel grey lighten-2 flex'>
+  <div class='col s4 card-panel grey lighten-2 flex'>
     <%if @user.all_owned.present?%>
       <%@user.all_owned.each do |room|%>
         <%=link_to study_room_path(room.slug) do%>
           <div class=" grey lighten-2 hoverable"><h5><%="#{room.name}"%></h5>
-          <%="#{room.location.name}, #{room.location.address}"%></div>
+          <%="#{room.location.name}, #{room.location.address}"%></div><br>
         <%end%>
       <%end%>
     <%else%>
@@ -42,40 +43,33 @@
 </div>
 
 <div class='row'>
-<div class='col s12 m4 center-align'><h4>Attending</h4></div>
+<div class='col s12 m4 center-align' style="font-size:140%">Attending</div>
 <div class='col s12 m2 center-align'></div>
-<div class='col s12 m6 center-align'><h4>Categories</h4></div>
+<div class='col s12 m6 center-align' style="font-size:140%">Categories</div>
 </div>
 <div class='row'>
   <div class='col s12 m4 card-panel grey lighten-2'>
     <%if @user.all_unowned.present?%>
-
         <%@user.all_unowned.each do |room|%>
           <%=link_to study_room_path(room.slug) do%>
             <div class=" grey lighten-2 hoverable"><h5><%="#{room.name}"%></h5>
             <%="#{room.location.name} - #{room.location.address}"%></div><br>
           <%end%>
         <%end%>
-        
-
+        <%else%>
+        <p>You aren't attending any events yet.</p>
     <%end%>
   </div>
 
     <div class='center-align'>
-
       <%if @user.all_categories.present?%>
-
-
           <%@user.all_categories.each do |cat|%>
-
             <div><h5><%=link_to "#{cat.name}", category_path(cat.slug), class: "col s12 m3 card-panel grey lighten-2 hoverable right center-align"%></h5></div>
-
           <%end%>
-
       <%end%>
-
     </div>
-
 </div>
 
 <%= link_to "Back to all", study_rooms_path %>
+
+</div>
