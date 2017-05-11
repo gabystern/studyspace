@@ -1,3 +1,4 @@
+<div class="wide-container">
 <div class="row">
   <div class="col s12">
     <h1 class="center-align"><%= @category.name %> </h1>
@@ -5,6 +6,7 @@
   </div>
 </div>
 
+<div class="wide-container">
 <div class="row">
   <div class="col s8">
     <h3 class="center-align">Study Rooms</h3>
@@ -32,7 +34,7 @@
             <% if @category.past.empty? %>
               No past events within this category.
             <% else %>
-              
+
               <% @category.past.each do |room| %>
                 <%=link_to study_room_path(room.slug) do%>
                   <div class=" grey lighten-2 hoverable"><%="#{room.name} - #{room.start_time}"%></div>
@@ -60,7 +62,7 @@
 
             <%if !@category.top_location.blank?%>
             <ul>
-              <li>Top Category: <br>
+              <li>Top Location: <br>
               <%=link_to "#{@category.top_location.name} - #{@category.top_location.address}", location_path(@category.top_location)%> <br>
               Number of events: <%= @category.top_location_event_count%></li>
             </ul>
@@ -69,6 +71,7 @@
              <%end%>
           </div>
         </div>
+      </div>
   </div>
 
   <div class="row">
@@ -76,3 +79,4 @@
       <%= link_to "Back to All categories", categories_path%>
     </div>
   </div>
+</div>

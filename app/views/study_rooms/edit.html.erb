@@ -3,26 +3,18 @@
 <h3> Edit a Study Room </h3>
 
   <%= form_for (@study_room) do |f| %>
-
       <div class="row">  <!-- Name and Blank Column -->
-
         <div class="col s4">
-
           <b> Name </b>
           <%= f.text_field :name %> <br>
-
         </div>
-
         <div class="col s8">
         </div>
-
       </div>
-
       <div class="row">  <!-- Date, Start Time and -->
         <% date = @study_room.start_time.to_datetime.strftime('%Y-%m-%d') %>
         <% time = @study_room.start_time.to_datetime.strftime("%T.%L") %>
         <% duration = (@study_room.end_time.to_time - @study_room.start_time.to_time) / 3600.0 %>
-
 
         <%= f.fields_for :time do |t| %>
           <div class="col s4">
@@ -86,7 +78,7 @@
       <div class = "row"> <!-- Sumit Button -->
 
         <div class="col s12">
-          <%= f.submit %>
+          <%= f.submit class: "waves-effect waves-light btn" %>
         </div>
 
       </div>

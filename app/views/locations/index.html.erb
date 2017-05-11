@@ -3,13 +3,13 @@
 
 <div class="container">
   <div class='row'>
-  <div class='col s8 map'>
+  <div class='col s6 map center-align'>
     <div class='card'>
-      <img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=400x500&scale=3"+Location.coord_output(Location.ranked)%>>
+      <img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=500x300&scale=3"+Location.coord_output(Location.ranked)%>>
     </div>
   </div>
 
-  <div class='col s4'>
+  <div class='col s5 offset-s1'>
     <%@locations.each do |location| %>
       <div class='card grey lighten-2 hoverable'>
             <span class="text center-align"><%=link_to location.name, location_path(location.slug)%></span><br>
