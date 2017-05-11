@@ -37,5 +37,9 @@ private
     datetime.push(time)
     datetime.join(" ")
   end
+  
+  def api_key
+    "AIzaSyB3F176LCpeD1f-yhcdxLpEIGQawbGQBIU"
+  end
 
 end

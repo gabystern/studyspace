@@ -85,7 +85,38 @@ CSS/Design
 ++## Location ratings and *metrics* - sound volume, cost, free wifi?,
 ## Enable study room cohosting
 ## Alert me about things my friends are doing #FOMO
-## Users can post comments in the study room
+## Users can post comments in the study room - DONE
+
+WEDNESDAY --
+
+# Materialize stuff:
+# Location Show - MARIANNA
+# Category Show - MARIANNA
+# User Show - MAX
+# User Index - MAX
+# Study Room Index - KYLE
+# Study Room New - KYLE
+# Consistency after all pages are done
+
+# Add Button to Create New Study Room on show page/user page - MAX DONE
+# Owners can edit their pages - MAX DONE
+# Nav bar - GABY
+# 
+
+
+# Study Room Index - KYLE
+# Bits and pieces - MARIANNA
+# Consistent styling for all pages
+# Navigation - GABY
+
+# Refactoring / Code Review
+# Write out Specs
+# Finish Analytics page
+# Push to Heroku
+
+# Stretch Goals
+
+
 
 
 # README

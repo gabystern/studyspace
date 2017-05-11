@@ -1,62 +1,106 @@
-<h1><%= @location.name %> </h1>
-<p>Address: <%= @location.address %> </p>
-<p>Average Rating: <%= @location.avg_rating %> </p>
-<p>Capacity: <%= @location.capacity %> </p>
-<p>Wifi: <%= @location.wifi %> </p>
-<p>Volume: <%= @location.volume %> </p>
+<div class="row center-align">
+ 
+  <h1><%= @location.name %></h1>
+ 
+</div>
+
+<div>
+  <div class="col s12 m6">
+    <div class="card">
+      <div class="card-image">
+        <img src="https://static.pexels.com/photos/45718/pexels-photo-45718.jpeg">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>Address: <%= @location.address %> </p>
+          <p>Average Rating: <%= @location.avg_rating %> </p>
+          <p>Capacity: <%= @location.capacity %> </p>
+          <p>Wifi: <%= @location.wifi %> </p>
+          <p>Volume: <%= @location.volume %> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card white">
+        <img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=500x600&scale=3"+Location.coord_output(@location)%>>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-<p> ----------------------------------------------------------------------------  </p>
 
-Upcoming Study Rooms:
-<ul>
-  <% if @location.upcoming.empty? %>
-    No one plans to study here yet. Be the first!
-  <% else %>
-    <% @location.upcoming.each do |room| %>
-      <li> <%= link_to "#{room.name} - #{room.start_time}", study_room_path(room.slug)%> </li>
-    <% end %>
-  <% end %>
-</ul>
 
-Past Study Rooms:
-<ul>
-  <% if @location.past.empty? %>
-    No one has previously studied here.
-  <% else %>
-    <% @location.past.each do |room| %>
-      <li> <%= link_to "#{room.name} - #{room.start_time}, study_room_path(room.slug)"%> </li>
-    <% end %>
-  <% end %>
-</ul>
 
-<p> ----------------------------------------------------------------------------  </p>
+  <div class="row">
 
-Types of Study Rooms Held Here:
-<ul>
-    <% if @location.categories.empty? %>
-      None yet...
-    <% else %>
-  <% @location.categories.each do |category| %>
-    <li><%= link_to category.name, category_path(category.slug) %> </li>
-  <% end %>
-<% end %>
-</ul>
+    <div class="col s7">
+      <h3 class="center-align">Study Rooms</h3>
+        <div class="card grey lighten-2">
+          <div class="card-content black-text">
+            <span class="card-title center-align">Upcoming Study Rooms:</span>
+            <ul>
+              <% if @location.upcoming.empty? %> No one plans to study here yet. Be the first!
+              <% else %>
+                <% @location.upcoming.each do |room| %>
+                  <li> <%= link_to "#{room.name} - #{room.start_time}", study_room_path(room.slug)%> </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
 
-<p> ----------------------------------------------------------------------------  </p>
+        <div class="card grey lighten-2">
+          <div class="card-content black-text">
+            <span class="card-title center-align">Past Study Rooms:</span>
+            <ul>
+              <% if @location.past.empty? %> No one has previously studied here.
+              <% else %>
+                <% @location.past.each do |room| %>
+                  <li> <%= link_to "#{room.name} - #{room.start_time}, study_room_path(room.slug)"%> </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
 
-Connect with other people who have studied here
-<ul>
-  <% if @location.users.empty? %>
-      Start the trend and be the first!
-    <% else %>
-  <% @location.users.each do |user| %>
-    <li><%= link_to user.username, user_path(user.slug) %> </li>
-  <% end %>
-<% end %>
-</ul>
+        <div class="card grey lighten-2">
+          <div class="card-content black-text">
+            <span class="card-title center-align">Types Usually Held Here: </span>
+              <ul>
+                <% if @location.categories.empty? %>
+                  None yet...
+                <% else %>
+                <% @location.categories.each do |category| %>
+                <li><%= link_to category.name, category_path(category.slug) %> </li>
+              <% end %>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-<br>
-<br>
+  <div class="col s5">
+    <h3 class="center-align">Social</h3>
+    <div class="card grey lighten-2">
+      <div class="card-content black-text">
+        <span class="card-title center-align">Connect With Others:</span>
+          <ul>
+          <% if @location.users.empty? %>
+              Start the trend and be the first!
+            <% else %>
+          <% @location.users.each do |user| %>
+            <li><%= link_to user.username, user_path(user.slug) %> </li>
+          <% end %>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <%= link_to "Back to All Locations", locations_path %>

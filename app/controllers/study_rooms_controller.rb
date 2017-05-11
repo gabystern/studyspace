@@ -54,7 +54,7 @@ class StudyRoomsController < ApplicationController
 
 
   def edit
-    @study_room = StudyRoom.find(params[:id])
+    @study_room = StudyRoom.find_by_slug(params[:id])
     @locations = Location.all
     @categories = Category.all
 

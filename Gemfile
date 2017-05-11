@@ -5,7 +5,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
 gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
+
+gem 'geocoder'
+
 gem 'materialize-sass'
 gem 'rspec'
 gem 'rspec-rails'
@@ -56,3 +60,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+ruby '2.4.1'
+gem 'rails_12factor', group: :production

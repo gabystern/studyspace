@@ -2,7 +2,10 @@
 
 <div class='row'>
 <div class='col s6 m6 map'>
-  <div class='card'><img class="responsive-img" src="https://i.kinja-img.com/gawker-media/image/upload/s--VEX-dASR--/c_scale,f_auto,fl_progressive,q_80,w_800/18z0kq4s8swbljpg.jpg"></div>
+  <div class='card'>
+    
+    <img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=500x600&scale=3"+Location.coord_output(Location.ranked)%>>
+  </div>
 </div>
 <div class='col s6 m6'>
   <%@locations.each do |location| %>

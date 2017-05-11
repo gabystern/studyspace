@@ -1,7 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Study Space</title>
+
+  <!-- CSS  -->
+</head>
 <body>
-       <img class='img center-align' width = "1000" src="https://cdn-images-1.medium.com/max/1280/1*r02q17GGCoyh3JyjNnqoDA.png">
+  <body>
+    <!-- nav bar  -->
+    <%= render '/navigation/nav_bar' %>
+    <!-- nav bar -->
+    <!-- banner  -->
+  <div id="index-banner" class="parallax-container">
+    <div class="welcome">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br> <br><br>
+        <h1 class="header center white-text">Study Space</h1>
+        <div class="row center">
+          <h5 class="header col s12 white-text">Find the study spot for you.</h5>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax-container responsive-img"><%=image_tag("tim-gouw-60216.jpg")%></div>
+  </div>
+    </div>
+  <!-- banner  -->
+  <!-- content  -->
     <div class="container">
-       <div class='center-align'><h2>Welcome to Study Space!</h2> </div>
     <div class="divider"></div>
      <div class="section">
       <p> Popular Locations </p>
@@ -32,6 +61,8 @@
       <% end %>
     </div>
   </div>
-       <%= link_to "#{current_user.username}'s Page", user_path(current_user) %>
-     </div>
+
+</div>
+
 </body>
+    <!-- content  -->
