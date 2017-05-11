@@ -5,6 +5,7 @@ RSpec.describe User, :feature do
     before do
         User.destroy_all
         StudyRoom.destroy_all
+        UserStudyRoom.destroy_all
         @user = User.create!(username: "MariKats", password: "123", password_confirmation: "123")
         @category = Category.create(name: 'Ruby')
         @location = Location.create(name: 'Central Park', address: '52 Central Park West', wifi: true, volume: 1, capacity: 10, longitude: 45.0, latitude: 50.1)
@@ -16,23 +17,23 @@ RSpec.describe User, :feature do
     end
 
     it "gets the study room's first user name" do
-        expect(@study_room.users.first.username).to eq("MariKats")
+        expect(@study_room.user_study_rooms.split.length).to eq(1)
     end
 
     it "gets the study room's first user name" do
-        expect(@study_room.location).to eq("Central Park")
+        expect(@study_room.location.name).to eq("Central Park")
     end
 
     describe "/users/:id" do
 
         it "links to the category" do
-        visit user_path(@user)
-        expect(page).to have_link("Ruby", href: category_path(@category))
+            visit study_room_path(@study_room)
+            should have('Ruby')
         end
 
         it "links to the location" do
-        visit user_path(@user)
-        expect(page).to have_link("Central Park", href: location_path(@location))
+            visit user_path(@user.slug)
+            expect(page).to have_link("Central Park", href: location_path(@location.slug))
         end
     end
 end
