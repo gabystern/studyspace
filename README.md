@@ -110,10 +110,18 @@ WEDNESDAY --
 # Consistent styling for all pages - MARIANNA/MAXWELL
 # Navigation - GABY
 
+# Final display set up - GABY
+#
+
 # Refactoring / Code Review
 # Write out Specs
-# Finish Analytics page
+# Finish Analytics page - DONE
 # Push to Heroku
+
+
+
+
+
 
 # Stretch Goals
 
