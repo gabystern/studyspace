@@ -8,56 +8,52 @@
   <!-- CSS  -->
 </head>
 <body>
-  <body>
-    <!-- nav bar  -->
-    <%= render '/navigation/nav_bar' %>
-    <!-- nav bar -->
     <!-- banner  -->
-  <div id="index-banner" class="parallax-container">
-    <div class="welcome">
-    <div class="section no-pad-bot">
       <div class="container">
-        <br><br> <br><br>
-        <h1 class="header center white-text">Study Space</h1>
+        <br><br>
+        <h1 class="header center teal-text narrow">Study Space</h1>
         <div class="row center">
-          <h5 class="header col s12 white-text">Find the study spot for you.</h5>
+          <h5 class="header col s12 teal-text">Find the study spot for you.</h5>
         </div>
         <br><br>
       </div>
-    </div>
-    <div class="parallax-container responsive-img"><%=image_tag("tim-gouw-60216.jpg")%></div>
-  </div>
-    </div>
   <!-- banner  -->
   <!-- content  -->
     <div class="container">
     <div class="divider"></div>
-     <div class="section">
+     <div class="section teal-text">
       <p> Popular Locations </p>
     <div class ="row">
-      <% Location.most_popular.each do |location| %>
-        <div class='col s4 center-align'>
-          <div class='card white darken-1 hoverable'>
-            <div class='card-content'>
-              <span class='card-title'><%=link_to location.name, location_path(location.slug)%></span>
+      <% Location.most_popular.each_with_index do |location, index| %>
+      <div class="col s12 m4 center-align'">
+        <div class="card">
+          <div class="card-image">
+            <div class="responsive-img"><%=image_tag("#{index+1}.jpg")%></div>
+            <div class="card-content center-align">
+              <p><%=link_to location.name, location_path(location.slug)%></p>
             </div>
           </div>
         </div>
+      </div>
       <% end %>
     </div>
   </div>
+
   <div class="divider"></div>
-  <div class="section">
+  <div class="section teal-text">
       <p> Popular Categories </p>
     <div class ="row">
-      <% Category.most_popular.each do |category| %>
-        <div class='col s4 center-align'>
-          <div class='card white darken-1 hoverable'>
-            <div class='card-content'>
-              <span class='card-title'><%=link_to category.name, category_path(category.slug)%></span>
+      <% Category.most_popular.each_with_index do |category, index| %>
+      <div class="col s12 m4 center-align'">
+        <div class="card">
+          <div class="card-image">
+            <div class="responsive-img"><%=image_tag("#{index+4}.jpg")%></div>
+            <div class="card-content center-align">
+              <p><%=link_to category.name, category_path(category.slug)%></p>
             </div>
           </div>
         </div>
+      </div>
       <% end %>
     </div>
   </div>

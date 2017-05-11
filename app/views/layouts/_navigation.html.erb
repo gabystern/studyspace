@@ -1,3 +1,15 @@
 <ul class="nav">
-  
+  <nav class="transparent z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" class="brand-logo ">Study Space</a>
+      <ul class="right hide-on-med-and-down">
+        <li id="color"><a href= <%=root_path%> ><i class="material-icons">home</i></a></li>
+        <li><a href= <%=locations_path%> >Locations</a></li>
+        <li><a href= <%=categories_path%> >Categories</a></li>
+        <% if current_user.present? %>
+          <li class="color" ><a href=<%=user_path(current_user)%>>My Profile</a></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
 </ul>
