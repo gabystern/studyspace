@@ -65,3 +65,9 @@ footer.page-footer {
       padding-bottom: 10px;
       padding-left: 10px;
 }
+
+.wide-container {
+  margin: 0 auto;
+  max-width: 1500px;
+  width: 80%;
+}
