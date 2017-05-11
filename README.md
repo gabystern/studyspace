@@ -104,9 +104,10 @@ WEDNESDAY --
 # 
 
 
-# Study Room Index - KYLE
-# Bits and pieces - MARIANNA
-# Consistent styling for all pages
+# Study Room Index - MARIANNA DONE
+# Bits and pieces - MARIANNA DONE
+# Show for Study Room, User, Location Index/Show - MARIANNA/MAXWEL
+# Consistent styling for all pages - MARIANNA/MAXWELL
 # Navigation - GABY
 
 # Refactoring / Code Review

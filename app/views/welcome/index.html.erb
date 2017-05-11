@@ -20,9 +20,8 @@
   <!-- banner  -->
   <!-- content  -->
     <div class="container">
-    <div class="divider"></div>
-     <div class="section teal-text">
-      <p> Popular Locations </p>
+     <div class="section text-color:#484848 ">
+      <div style="font-size:120%" > Popular Locations </div>
     <div class ="row">
       <% Location.most_popular.each_with_index do |location, index| %>
       <div class="col s12 m4 center-align'">
@@ -30,7 +29,7 @@
           <div class="card-image">
             <div class="responsive-img"><%=image_tag("#{index+1}.jpg")%></div>
             <div class="card-content center-align">
-              <p><%=link_to location.name, location_path(location.slug)%></p>
+              <div id="menu" ><%=link_to location.name, location_path(location.slug)%></div>
             </div>
           </div>
         </div>
@@ -39,9 +38,8 @@
     </div>
   </div>
 
-  <div class="divider"></div>
-  <div class="section teal-text">
-      <p> Popular Categories </p>
+  <div class="section text-color:#484848 ">
+      <div style="font-size:120%"> Popular Categories </div>
     <div class ="row">
       <% Category.most_popular.each_with_index do |category, index| %>
       <div class="col s12 m4 center-align'">
@@ -49,7 +47,7 @@
           <div class="card-image">
             <div class="responsive-img"><%=image_tag("#{index+4}.jpg")%></div>
             <div class="card-content center-align">
-              <p><%=link_to category.name, category_path(category.slug)%></p>
+              <div id="menu"><%=link_to category.name, category_path(category.slug)%></div>
             </div>
           </div>
         </div>

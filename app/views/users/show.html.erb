@@ -10,48 +10,56 @@
 </div>
 
 <div class='row'>
-  <div class='col s4 left-align'><h4 class="center-align">Hosting</h4>
-    <div class='card-panel grey lighten-2 hoverable'>
-      <%if @user.all_owned.present?%>
-        <%@user.all_owned.each do |room|%>
-          <h5><%=link_to "#{room.name}", study_room_path(room.slug)%></h5>
-          <span><%=link_to "#{room.location.name}, #{room.location.address}", study_room_path(room.slug)%></span><br>
+
+  <div class='col s12 m4 center-align'><h4 class="center-align">Hosting</h4></div>
+  <div class='col s12 m4 center-align'><h4>Map</h4></div>
+  <div class='col s12 m4 center-align'><h4>Locations</h4></div>
+
+</div>
+<div class='row'>
+  <div class='col s12 m4 card-panel grey lighten-2 flex'>
+    <%if @user.all_owned.present?%>
+      <%@user.all_owned.each do |room|%>
+        <%=link_to study_room_path(room.slug) do%>
+          <div class=" grey lighten-2 hoverable"><h5><%="#{room.name}"%></h5>
+          <%="#{room.location.name}, #{room.location.address}"%></div>
         <%end%>
       <%end%>
-    </div>
+    <%else%>
+      <p class="grey-text flow-text"><i>No hosted rooms</i></p>
+    <%end%>
   </div>
-  <div class='col s4 center-align'><h4>Map</h4></div>
-  <div class='col s4 center-align'><h4>Locations</h4></div>
-</div>
+  <div class="col s12 m4 center-align"><img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=300x400&scale=3"+Location.coord_output(@user.all_locations)%>></div>
+  <div class="col s12 m4 card-panel grey lighten-2">
 
-<div class='row'>
-  <div class="col s12 m4 card section"><img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=300x400&scale=3"+Location.coord_output(@user.all_locations)%>></div>
-  <div class="col s12 m4 card section right-align">
     <%@user.all_locations.each do |location|%>
-      <h5><%=link_to "#{location.name}", location_path(location.slug)%></h5>
-      <span><%=link_to "#{location.address}", location_path(location.slug)%></span><br>
+      <%=link_to location_path(location.slug) do%>
+        <div class=" grey lighten-2 hoverable"><h5><%="#{location.name}"%></h5>
+        <%="#{location.address}"%></div><br>
+      <%end%>
     <%end%>
   </div>
 </div>
 
 <div class='row'>
-<div class='col s12 m4 left-align'><h4>Attending</h4></div>
-<div class='col s12 m8 right-align'><h4>Categories</h4></div>
+<div class='col s12 m4 center-align'><h4>Attending</h4></div>
+<div class='col s12 m2 center-align'></div>
+<div class='col s12 m6 center-align'><h4>Categories</h4></div>
 </div>
 <div class='row'>
-  <div class='col s12 m4 card section'>
+  <div class='col s12 m4 card-panel grey lighten-2'>
     <%if @user.all_unowned.present?%>
 
         <%@user.all_unowned.each do |room|%>
-          <h5><%=link_to "#{room.name}", study_room_path(room.slug)%></h5>
-          <span><%=link_to "#{room.location.name} - #{room.location.address}", study_room_path(room.slug)%></span><br>
-
+          <%=link_to study_room_path(room.slug) do%>
+            <div class=" grey lighten-2 hoverable"><h5><%="#{room.name}"%></h5>
+            <%="#{room.location.name} - #{room.location.address}"%></div><br>
+          <%end%>
         <%end%>
+        
 
     <%end%>
   </div>
-</div>
-
 
     <div class='center-align'>
 
@@ -60,7 +68,7 @@
 
           <%@user.all_categories.each do |cat|%>
 
-            <div class="col s2 m2 card"><h6><%=link_to "#{cat.name}", category_path(cat.slug)%></h6></div>
+            <div><h5><%=link_to "#{cat.name}", category_path(cat.slug), class: "col s12 m3 card-panel grey lighten-2 hoverable right center-align"%></h5></div>
 
           <%end%>
 
