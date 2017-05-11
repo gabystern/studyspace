@@ -8,30 +8,38 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col s12 m8">
-        <div class="card-panel white">
-          <ul>
-            <li> <p> <b> Category: </b> <%= link_to @study_room.category.name, category_path(@study_room.category.slug)  %> </p> </li>
-            <li> <p> <b> Location: </b> <%= link_to @study_room.location.name, location_path(@study_room.location.slug)  %> </p> </li>
-            <li> <p> <b> Starting Time: </b> <%= @study_room.start_time.strftime("%A, %B %d %I:%M %p")  %> </p> </li>
-            <li> <p> <b> Duration: </b> <%= @study_room.end_time.hour -  @study_room.start_time.hour %> hour</p> </li>
-            <li> <p> <b> Hosts: </b>
-              <%if !@study_room.users.blank?%>
-                <%@study_room.user_study_rooms.each do |usr|%>
-                  <%if usr.owner == true%>
-                    <span><%=link_to usr.user.username, user_path(usr.user.slug)%></span>
-                  <%end%>
+
+
+<div class="col s12 m8">
+  <div class="card">
+    <div class="card-image">
+      <img src="http://www.thebluediamondgallery.com/wooden-tile/images/study.jpg">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <ul>
+          <li> <p> <b> Category: </b> <%= link_to @study_room.category.name, category_path(@study_room.category.slug)  %> </p> </li>
+          <li> <p> <b> Location: </b> <%= link_to @study_room.location.name, location_path(@study_room.location.slug)  %> </p> </li>
+          <li> <p> <b> Starting Time: </b> <%= @study_room.start_time.strftime("%A, %B %d %I:%M %p")  %> </p> </li>
+          <li> <p> <b> Duration: </b> <%= @study_room.end_time.hour -  @study_room.start_time.hour %> hour</p> </li>
+          <li> <p> <b> Hosts: </b>
+            <%if !@study_room.users.blank?%>
+              <%@study_room.user_study_rooms.each do |usr|%>
+                <%if usr.owner == true%>
+                  <span><%=link_to usr.user.username, user_path(usr.user.slug)%></span>
                 <%end%>
-              <%else%>
-                <h3>No host currently</h3>
-              <%end%></p> </li>
-          </ul>
-        </div>
+              <%end%>
+            <%else%>
+              <h3>No host currently</h3>
+            <%end%></p> </li>
+        </ul>
       </div>
+    </div>
+  </div>
+</div>
 
         <div class="col s12 m4">
-          <div class="card-panel white">
+          <div class="card-panel grey lighten-2">
             <div id="attendees">
               <%if !@study_room.users.blank?%>
                 <%@study_room.users.each do |user|%>
@@ -43,21 +51,31 @@
             </div>
           </div>
         </div>
-      </div>
+
 <div>
-<br>
-
-<div id="join_or_leave">
-  <% if current_user.study_rooms.include?(@study_room)%>
-    <%=render 'leave_button'%>
-  <% else %>
-    <%=render 'join_button'%>
-  <% end %>
-</div>
-
+  <div id="join_or_leave" class="center-align">
+    <% if current_user.study_rooms.include?(@study_room)%>
+      <%=render 'leave_button'%>
+    <% else %>
+      <%=render 'join_button'%>
+    <% end %>
+  </div>
 <%=render 'comment_box'%>
 </div>
-<%=link_to "Back to Study Rooms", study_rooms_path%>
-<%=link_to "See all Users", users_path%>
-<%=link_to "See all Locations", locations_path%>
-<%=link_to "See all Categories", categories_path%>
+
+<br><br>
+
+<div class="row center-align">
+  <div class="col s3">
+    <%=link_to "Back to Study Rooms", study_rooms_path%>
+  </div>
+  <div class="col s3">
+    <%=link_to "See all Users", users_path%>
+  </div>
+  <div class="col s3">
+    <%=link_to "See all Locations", locations_path%>
+  </div>
+  <div class="col s3">
+    <%=link_to "See all Categories", categories_path%>
+  </div>
+</div>
