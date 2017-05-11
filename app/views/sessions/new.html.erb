@@ -1,8 +1,10 @@
-<h1> Log In </h1>
+<div class="wide-container">
+  <h1> Log In </h1>
 
-<%= form_for User.new, url: sessions_new_path do |f| %>
-Username: <%= f.text_field :username %>
-Password: <%= f.password_field :password %>
-<%= f.submit "Log In"%>
+  <%= form_for User.new, url: sessions_new_path do |f| %>
+  Username: <%= f.text_field :username %>
+  Password: <%= f.password_field :password %>
+  <%= f.submit "Log In"%>
 
-<% end %>
+  <% end %>
+</div>
