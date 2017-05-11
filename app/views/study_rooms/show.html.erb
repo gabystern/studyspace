@@ -14,7 +14,7 @@
           <ul>
             <li> <p> <b> Category: </b> <%= link_to @study_room.category.name, category_path(@study_room.category.slug)  %> </p> </li>
             <li> <p> <b> Location: </b> <%= link_to @study_room.location.name, location_path(@study_room.location.slug)  %> </p> </li>
-            <li> <p> <b> Starting Time: </b> <%= @study_room.start_time.strftime("%A, %B %d %I:%M %p")  %> </p> </li>
+            <li> <p> <b> Starting Time: </b> <%= format_time(@study_room.start_time) %> </p> </li>
             <li> <p> <b> Duration: </b> <%= @study_room.end_time.hour -  @study_room.start_time.hour %> hour</p> </li>
             <li> <p> <b> Hosts: </b>
               <%if !@study_room.users.blank?%>
