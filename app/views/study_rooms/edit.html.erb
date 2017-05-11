@@ -1,41 +1,106 @@
-<h3> Create a New Study Room </h3>
-<%= flash[:notice] %>
-<p>
-  <%= form_for (@study_room) do |f| %>
-    <b> Name </b>
-    <%= f.text_field :name %> <br>
-    <br> <hr> <br>
-    <b> Category </b>
-    <%= f.select :category_id, @categories.collect {|category| [category.name, category.id]}, {include_blank: true} %> <br>
-    <br>
-    <%= f.fields_for :category do |c| %>
-      <b> Create a new category </b> <br> <br>
-      Name  <%= c.text_field :name %> <br> <br>
-      Description <%= c.text_area :description %> <br> <br>
-    <% end %>
-    <hr> <br>
-    <b> Location </b>
-    <%= f.select :location_id, @locations.collect {|location| [location.name, location.id]}, {include_blank: true} %> <br>
-    <br>
-    <%= f.fields_for :location do |l| %>
-      <b> Create a new location </b> <br> <br>
-      Name <%= l.text_field :name %> <br> <br>
-      Address <%= l.text_area :address %> <br> <br>
-      Wifi <%= l.check_box :wifi, {}, "true", "false" %> <br> <br>
-      Available spots <%= l.number_field :capacity, min: 1 %> <br> <br>
-      Volume at location <%= l.text_field :volume %> <br> <br>
-    <% end %>
-    <hr> <br>
-    <%= f.fields_for :time do |t| %>
-      <b> Date </b> <%= t.date_field :date %> <br> <br>
-      <b> Starting Time </b> <%= t.time_field :start_time, step: 15 %> <br> <br>
-      <b> Duration </b> (in hours) <%= t.number_field :duration, step: 0.25 %> <br> <br>
-    <% end %>
-    <%= f.submit %>
-  <% end %>
-</p>
+<h3> Edit a Study Room </h3>
 
-<%=link_to "Return to Study Rooms", study_rooms_path%>
-<%=link_to "See all Users", users_path%>
-<%=link_to "See all Locations", locations_path%>
-<%=link_to "See all Categories", categories_path%>
+  <%= form_for (@study_room) do |f| %>
+
+      <div class="row">  <!-- Name and Blank Column -->
+
+        <div class="col s4">
+
+          <b> Name </b>
+          <%= f.text_field :name %> <br>
+
+        </div>
+
+        <div class="col s8">
+        </div>
+
+      </div>
+
+      <div class="row">  <!-- Date, Start Time and -->
+        <% date = @study_room.start_time.to_datetime.strftime('%Y-%m-%d') %>
+        <% time = @study_room.start_time.to_datetime.strftime("%T.%L") %>
+        <% duration = (@study_room.end_time.to_time - @study_room.start_time.to_time) / 3600.0 %>
+
+
+        <%= f.fields_for :time do |t| %>
+          <div class="col s4">
+            <b> Date </b> <%= t.date_field :date, value: "#{date}" %>
+          </div>
+
+          <div class="col s4">
+            <b> Starting Time </b> <%= t.time_field :start_time, value: time %>
+          </div>
+
+          <div class="col s4">
+            <b> Duration </b> (in hours) <%= t.number_field :duration, step: 0.25, value: "#{duration}" %> <br> <br>
+          </div>
+        <% end %>
+
+      </div>
+
+      <div class="row"> <!-- Category Selector and Location Selector --->
+
+        <div class="col s6">
+          <b> Category </b>
+          <%= f.select :category_id, @categories.collect {|category| [category.name, category.id]}, {prompt: "Choose a category"}, class: "browser-default" %>
+        </div>
+
+        <div class="col s6">
+          <b> Location </b>
+          <%= f.select :location_id, @locations.collect {|location| [location.name, location.id]}, {prompt: "Choose a location"}, class: "browser-default" %>
+        </div>
+
+      </div>
+
+      <div class="row"> <!-- Create a new Category and Create a new Location -->
+          <div class="col s6">
+
+              <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header">
+                 <i class="material-icons">expand_less</i> Add a category </div>
+                 <div class="collapsible-body">
+                   <%= f.fields_for :category do |c| %>
+                     Name  <%= c.text_field :name %> <br> <br>
+                     Description <%= c.text_area :description %> <br> <br>
+                   <% end %>
+                 </div>
+               </li>
+              </ul>
+
+          </div>
+
+          <div class="col s6">
+
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                  <div class="collapsible-header">
+                   <i class="material-icons">expand_less</i> Add a location </div>
+                   <div class="collapsible-body">
+                     <%= f.fields_for :location do |l| %>
+                       Name <%= l.text_field :name %> <br> <br>
+                       Address <%= l.text_area :address %> <br> <br>
+                       Wifi <%= l.check_box :wifi, {}, "true", "false" %> <br> <br>
+                       Available spots <%= l.number_field :capacity, min: 1 %> <br> <br>
+                       Volume at location <%= l.text_field :volume %> <br> <br>
+                     <% end %>
+                   </div>
+               </li>
+            </ul>
+
+          </div>
+
+      </div>
+
+      <div class="row"> <!-- Empty Row -->
+      </div>
+
+      <div class = "row"> <!-- Sumit Button -->
+
+        <div class="col s12">
+          <%= f.submit %>
+        </div>
+
+      </div>
+
+  <% end %>
