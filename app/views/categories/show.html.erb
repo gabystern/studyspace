@@ -1,56 +1,73 @@
-<h1><%= @category.name %> </h1>
-<p><%= @category.description %> </p>
+<div class="row">
+  <div class="col s12">
+    <h1 class="center-align">Category: <%= @category.name %> </h1>
+    <p><%= @category.description %> </p>
+  </div>
+</div>
 
-<p> ----------------------------------------------------------------------------  </p>
+<div class="row">
+  <div class="col s8">
+    <h3 class="center-align">Study Rooms</h3>
+      <div class="card grey lighten-2">
+        <div class="card-content black-text">
+          <span class="card-title center-align">Upcoming Study Rooms:</span>
+          <ul>
+            <% if @category.upcoming.empty? %>
+              No upcoming study rooms within this category. Be the first!
+            <% else %>
+              <% @category.upcoming.each do |room| %>
+                <li > <%= link_to "#{room.name} - #{room.start_time}", study_room_path(room.slug)%> </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
 
-Upcoming Study Rooms Within this Category:
-<ul>
-  <% if @category.upcoming.empty? %>
-    No upcoming study rooms within this category. Be the first!
-  <% else %>
-    <% @category.upcoming.each do |room| %>
-      <li> <%= link_to "#{room.name} - #{room.start_time}", study_room_path(room.slug)%> </li>
-    <% end %>
-  <% end %>
-</ul>
+      <div class="card grey lighten-2">
+        <div class="card-content black-text">
+          <span class="card-title center-align">Past Study Rooms:</span>
+          <ul>
+            <% if @category.past.empty? %>
+              No past events within this category.
+            <% else %>
+              <% @category.past.each do |room| %>
+                <li> <%= link_to "#{room.name} - #{room.start_time}", study_room_path(room.slug)%> </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-----------------------------------------------------------------------------  </p>
+  <div class="col s4">
+    <h3 class="center-align">Stats</h3>
+        <div class="card grey lighten-2">
+          <div class="card-content black-text">
+            <%if !@category.top_user.blank?%>
+              <ul>
+                <li>Top User: <br>
+                <%=link_to @category.top_user.username, user_path(@category.top_user)%> <br>
+                Number of events: <%= @category.top_user_event_count%></li>
+              </ul>
+            <%else%>
+              <span>No top user for this category</span>
+            <%end%>
 
-Past Study Rooms Within this Category:
-<ul>
-  <% if @category.past.empty? %>
-    No past events within this category.
-  <% else %>
-    <% @category.past.each do |room| %>
-      <li> <%= link_to "#{room.name} - #{room.start_time}", study_room_path(room.slug)%> </li>
-    <% end %>
-  <% end %>
-</ul>
+            <%if !@category.top_location.blank?%>
+            <ul>
+              <li>Top Category: <br>
+              <%=link_to "#{@category.top_location.name} - #{@category.top_location.address}", location_path(@category.top_location)%> <br>
+              Number of events: <%= @category.top_location_event_count%></li>
+            </ul>
+            <%else%>
+               <span>No top location for this category</span>
+             <%end%>
+          </div>
+        </div>
+  </div>
 
-<p> ----------------------------------------------------------------------------  </p>
-<label>Top User within this Category:
-</label>
-<%if !@category.top_user.blank?%>
-  <ul>
-    <li><%=link_to @category.top_user.username, user_path(@category.top_user.slug)%></li>
-    <li>Number of events: <%= @category.top_user_event_count%></li>
-  </ul>
-<%else%>
-  <span>No top user for this category</span>
-<%end%>
- <p> ----------------------------------------------------------------------------  </p>
- <label>Top Location for this Category:
- </label>
- <%if !@category.top_location.blank?%>
- <ul>
-   <li><%=link_to "#{@category.top_location.name} - #{@category.top_location.address}", location_path(@category.top_location)%></li>
-   <li>Number of events: <%= @category.top_location_event_count%></li>
- </ul>
- <%else%>
-    <span>No top location for this category</span>
-  <%end%>
-  <br>
-
-
-
-<%= link_to "Back to All categories", categories_path %>
+  <div class="row">
+    <div class="col s12">
+      <%= link_to "Back to All categories", categories_path%>
+    </div>
+  </div>

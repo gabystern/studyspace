@@ -1,11 +1,10 @@
-
-<div class="row">
-  <div class="col s12">
-    <h2 class="header center-align">Location: <%= @location.name %></h2>
-  </div>
+<div class="row center-align">
+ 
+  <h1><%= @location.name %></h1>
+ 
 </div>
 
-<div class="container">
+<div>
   <div class="col s12 m6">
     <div class="card">
       <div class="card-image">
@@ -26,7 +25,7 @@
   <div class="row">
     <div class="col s12 m6">
       <div class="card white">
-        <img class="responsive-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/New_York_Manhattan_printable_tourist_attractions_map.jpg">
+        <img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=500x600&scale=3"+Location.coord_output(@location)%>>
       </div>
     </div>
   </div>
@@ -102,68 +101,6 @@
     </div>
   </div>
 </div>
-
-=======
-<h1><%= @location.name %> </h1>
-<p>Address: <%= @location.address %> </p>
-<p>Average Rating: <%= @location.avg_rating %> </p>
-<p>Capacity: <%= @location.capacity %> </p>
-<p>Wifi: <%= @location.wifi %> </p>
-<p>Volume: <%= @location.volume %> </p>
-
-<img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=300x400&scale=3"+Location.coord_output(@location)%>>
-<p> ----------------------------------------------------------------------------  </p>
-
-Upcoming Study Rooms:
-<ul>
-  <% if @location.upcoming.empty? %>
-    No one plans to study here yet. Be the first!
-  <% else %>
-    <% @location.upcoming.each do |room| %>
-      <li> <%= link_to "#{room.name} - #{room.start_time}", study_room_path(room.slug)%> </li>
-    <% end %>
-  <% end %>
-</ul>
-
-Past Study Rooms:
-<ul>
-  <% if @location.past.empty? %>
-    No one has previously studied here.
-  <% else %>
-    <% @location.past.each do |room| %>
-      <li> <%= link_to "#{room.name} - #{room.start_time}, study_room_path(room.slug)"%> </li>
-    <% end %>
-  <% end %>
-</ul>
-
-<p> ----------------------------------------------------------------------------  </p>
-
-Types of Study Rooms Held Here:
-<ul>
-    <% if @location.categories.empty? %>
-      None yet...
-    <% else %>
-  <% @location.categories.each do |category| %>
-    <li><%= link_to category.name, category_path(category.slug) %> </li>
-  <% end %>
-<% end %>
-</ul>
-
-<p> ----------------------------------------------------------------------------  </p>
-
-Connect with other people who have studied here
-<ul>
-  <% if @location.users.empty? %>
-      Start the trend and be the first!
-    <% else %>
-  <% @location.users.each do |user| %>
-    <li><%= link_to user.username, user_path(user.slug) %> </li>
-  <% end %>
-<% end %>
-</ul>
-
-<br>
-<br>
 
 
 <%= link_to "Back to All Locations", locations_path %>
