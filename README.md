@@ -104,6 +104,20 @@ WEDNESDAY --
 # 
 
 
+# Study Room Index - KYLE
+# Bits and pieces - MARIANNA
+# Consistent styling for all pages
+# Navigation - GABY
+
+# Refactoring / Code Review
+# Write out Specs
+# Finish Analytics page
+# Push to Heroku
+
+# Stretch Goals
+
+
+
 
 # README
 
