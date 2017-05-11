@@ -1,18 +1,28 @@
 <div class='row center-align'><h2>Site Information</h2></div>
 <div class='row'>
-    <div class='col s4 m4 card'>Users</div>
-    <div class='col s4 m4 card'>Study Rooms</div>
-    <div class='col s4 m4 card'>Locations</div>
+    <h4 class='col s4 m4 center-align'>Users</h4>
+    <h4 class='col s4 m4 center-align'>Study Rooms</h4>
+    <h4 class='col s4 m4 center-align'>Locations</h4>
 </div>
 <div class='row'>
     <div class='col s4 m4 card center-align'>
-        <p>Total Users: </p>
+        <h5>Total Users</h5>
+        <div><p><%=@users.count%></p></div>
+        <p></p>
     </div>
-    <div class='col s4 m4 card'>
-        <p>Total Study Rooms: </p>
+    <div class='col s4 m4 card center-align'>
+        <h5>Total Study Rooms</h5>
+        <div><p><%=@study_rooms.count%></p></div>
+        <p></p>
     </div>
-    <div class='col s4 m4 card'>
-        <p>Total Locations: </p>
+    <div class='col s4 m4 card center-align'>
+        <h5>Total Locations</h5>
+        <div><p><%=@locations.count%></p></div>
+        <h5>Top Locations</h5>
+        <p><%Location.most_popular.each do |loc|%>
+                <div><p><%=loc.name%> - <%=loc.address%></p></div>
+            <%end%>
+        </p>
     </div>
 </div>
 <div class='row'>
