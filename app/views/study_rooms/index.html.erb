@@ -10,10 +10,11 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container d-flex">
 <div class="row">
+
   <% @study_rooms.each do |study_room|  %>
-  <div class="col s4">
+  <div class="col s6">
     <div class="card-panel grey lighten-2 hoverable">
       <ul>
         <h4 class="center-align" style="font-size:160%"> <b> <%= link_to study_room.name, study_room_path(study_room.slug) %> </b> </h4>
