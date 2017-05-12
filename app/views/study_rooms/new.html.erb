@@ -41,12 +41,16 @@
 
         <div class="col s6">
           <b> Category </b>
-          <%= f.select :category_id, @categories.collect {|category| [category.name, category.id]}, {prompt: "Choose a category"}, class: "browser-default" %>
+          <!-- <%= f.select :category_id, @categories.collect {|category| [category.name, category.id]}, {prompt: "Choose a category"}, class: "browser-default" %> -->
+          <%= f.collection_select :category_id, @categories, :id, :name, include_blank: "choose a categories" %>
+
         </div>
 
         <div class="col s6">
           <b> Location </b>
-          <%= f.select :location_id, @locations.collect {|location| [location.name, location.id]}, {prompt: "Choose a location"}, class: "browser-default" %>
+          <!-- <%= f.select :location_id, @locations.collect {|location| [location.name, location.id]}, {prompt: "Choose a location"}, class: "browser-default" %> -->
+          <%= f.collection_select :location_id, @locations, :id, :name,  include_blank: "choose a location" %>
+
         </div>
 
       </div>
@@ -72,7 +76,7 @@
              <%= l.check_box :wifi, {}, "true", "false" %>
              <%= l.label :wifi, "Free Wifi" %> <br> <br>
              Available spots <%= l.number_field :capacity, min: 1 %> <br> <br>
-             Volume at location <%= l.text_field :volume %> <br> <br>
+             Volume at location <%= l.number_field :volume , min: 1 %> <br> <br>
            <% end %>
           </div>
 
@@ -84,7 +88,9 @@
       <div class = "row"> <!-- Sumit Button -->
 
         <div class="col s12">
-          <%= f.submit %>
+          <a class="waves-effect waves-light btn">
+            <%= f.submit %>
+          </a>
         </div>
 
       </div>
