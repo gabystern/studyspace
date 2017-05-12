@@ -58,8 +58,6 @@
 
           <div class="col s6">
 
-          <% @study_room.location.wifi == "1" ? default_value = true :  default_value = false %>
-
           <b> Add a location </b> <br>
           <br>
            <%= f.fields_for :location do |l| %>
