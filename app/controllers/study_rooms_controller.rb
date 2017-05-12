@@ -39,7 +39,7 @@ class StudyRoomsController < ApplicationController
                   location_id: location_id)
 
    usr = UserStudyRoom.create(user_id: current_user.id, study_room_id: study_room.id, owner: true)
-  
+
    redirect_to study_room_path(study_room.slug)
    end
 
@@ -57,6 +57,15 @@ class StudyRoomsController < ApplicationController
     @study_room = StudyRoom.find_by_slug(params[:id])
     @locations = Location.all
     @categories = Category.all
+  end
+
+  def update
+    @study_room = StudyRoom.find_by_slug(params[:id])
+
+    
+  end
+
+  def destroy
 
   end
 

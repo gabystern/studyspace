@@ -69,8 +69,8 @@
            <%= f.fields_for :location do |l| %>
              Name <%= l.text_field :name %> <br> <br>
              Address <%= l.text_area :address %> <br> <br>
-             <%= l.check_box :wifi, placeholder: "Free Wifi"%> 
-             <%= l.label :wifi, "Free Wifi"%> <br> <br>
+             <%= l.check_box :wifi, {}, "true", "false" %>
+             <%= l.label :wifi, "Free Wifi" %> <br> <br>
              Available spots <%= l.number_field :capacity, min: 1 %> <br> <br>
              Volume at location <%= l.text_field :volume %> <br> <br>
            <% end %>
