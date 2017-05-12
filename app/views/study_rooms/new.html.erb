@@ -72,7 +72,7 @@
              <%= l.check_box :wifi, {}, "true", "false" %>
              <%= l.label :wifi, "Free Wifi" %> <br> <br>
              Available spots <%= l.number_field :capacity, min: 1 %> <br> <br>
-             Volume at location <%= l.text_field :volume %> <br> <br>
+             Volume at location <%= l.number_field :volume , min: 1 %> <br> <br>
            <% end %>
           </div>
 
