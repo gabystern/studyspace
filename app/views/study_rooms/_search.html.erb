@@ -1,9 +1,19 @@
 
 
-<h3> Filter by: </h3>
+
 <%= form_tag(study_rooms_path, :method => "get", id: "search-form") do %>
 
-Location <%= collection_select(:search, :location_id, @locations, :id, :name, include_blank: "All") %>
-Category <%= collection_select(:search, :category_id, @categories, :id, :name, include_blank: "All") %>
-    <%= submit_tag "Filter", :name => nil %>
+  <div class="col s3 offset-s3">
+    <%= collection_select :search, :location_id, @locations, :id, :name,  include_blank: "all locations" %>
+  </div>
+
+  <div class="col s3">
+    <%= collection_select(:search, :category_id, @categories, :id, :name, include_blank: "all categories") %>
+  </div>
+
+<div class="col s2">
+  <a class="waves-effect waves-light btn">
+  <%= submit_tag "apply", :name => nil %> </a>
+</div>
+
 <% end %>
