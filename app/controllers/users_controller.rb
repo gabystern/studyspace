@@ -31,7 +31,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    
     if User.find_by_slug(params[:id])
       @user = User.find_by_slug(params[:id])
     else

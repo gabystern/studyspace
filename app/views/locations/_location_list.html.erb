@@ -1,0 +1,30 @@
+<div class='col s5 offset-s1'>
+    <%@locations.each do |location| %>
+      <div class='card grey lighten-2 hoverable'>
+            <span class="text center-align"><b><%=link_to location.name, location_path(location.slug)%></b></span><br>
+            <span class="text">Address: <%=location.address%></span><br>
+            <span class="text">
+            <span class="material-icons">
+            <%if location.wifi == true%>
+              <b class="blue-text">settings_input_antenna</b>
+            <%else%>
+              <b class="grey-text text-darken-1">portable_wifi_off</b>
+            <%end%>
+            </span>
+            <span class="material-icons">
+            <%if location.volume == '1'%>
+              <b class='grey-text'>volume_mute</b>
+            <%elsif location.volume == '2'%>
+              <b class='grey-text text-darken-1'>volume_down</b>
+            <%else%>
+              <b>volume_up</b>
+            <%end%>
+            </span><b><%=location.volume%>
+            <i class="material-icons">
+              supervisor_account  
+            </i><b><%=location.capacity%></b>
+            
+            </span>
+      </div>
+      <% end %>
+    </div>

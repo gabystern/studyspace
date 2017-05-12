@@ -3,59 +3,16 @@
   <h1><%= @location.name %></h1>
 </div>
 
+<!-- Top Map Row -->
 <div class="row">
-  <div class="col s3">
-  </div>
-  <div class="col s6">
-    <div class="card">
-      <div class="card-image-medium">
-        <img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=1080x200&zoom=15scale=2"+Location.coord_output(@location)%>>
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <p>Address: <b><%= @location.address %></b></p>
-          <p>Average Rating: 
-            <%if !@location.avg_rating.nil?%>
-              No rating
-            <%else%>
-              <b><%= @location.avg_rating%></b>
-            <%end%> </p>
-          <span class="loc-icons">Wifi: </span>
-            <span class="material-icons loc-icons">
-              <%if @location.wifi == true%>
-                <b class="blue-text">settings_input_antenna</b>
-              <%else%>
-                <b class="grey-text text-darken-1">portable_wifi_off</b>
-              <%end%>
-            </span>
-          
-          <span class="loc-icons">Volume: </span>
-            <span class="material-icons">
-              <%if @location.volume == '1'%>
-                <b class='grey-text'>volume_mute</b>
-              <%elsif @location.volume == '2'%>
-                <b class='grey-text text-darken-1'>volume_down</b>
-              <%else%>
-                <b>volume_up</b>
-              <%end%>
-            </span><b><%=@location.volume%></b>
-          
-          <span class="loc-icons">Capacity: </span><i class="material-icons loc-icons">
-              supervisor_account  
-            </i><b><%=@location.capacity%></b> 
-            
-            
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="col s3"></div>
 
-  <div class="col s3">
+  <%=render 'map_card'%>
 
-  </div>
+  <div class="col s3"></div>
 </div>
 
-
+<!-- Lower Rows / Info Cards -->
   <div class="row">
     <div class="col s7">
       <h3 class="center-align">Study Rooms</h3>

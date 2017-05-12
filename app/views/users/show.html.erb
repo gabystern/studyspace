@@ -11,57 +11,30 @@
   </div>
 </div>
 
+<!--Top Header Row -->
 <div class='row'>
-
   <div class='col s4 center-align' class="center-align" style="font-size:140%">Hosting</div>
   <div class='col s4 center-align' style="font-size:140%">Map</div>
   <div class='col s4 center-align' style="font-size:140%">Locations</div>
-
 </div>
+
+<!--Top Cards Row -->
 <div class='row d-flex'>
-  <div class='col s4 card-panel grey lighten-2'>
-    <%if @user.all_owned.present?%>
-      <%@user.all_owned.each do |room|%>
-        <%=link_to study_room_path(room.slug) do%>
-          <div class=" grey lighten-2 hoverable"><h5><%="#{room.name}"%></h5>
-          <%="#{room.location.name}, #{room.location.address}"%></div><br>
-        <%end%>
-      <%end%>
-    <%else%>
-      <p class="grey-text flow-text"><i>No hosted rooms</i></p>
-    <%end%>
-  </div>
+  <%=render 'hosted_rooms'%>
   <div class="col s12 m4 center-align"><img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=300x400&scale=3"+Location.coord_output(@user.all_locations)%>></div>
-  <div class="col s12 m4 card-panel grey lighten-2">
-
-    <%@user.all_locations.each do |location|%>
-      <%=link_to location_path(location.slug) do%>
-        <div class=" grey lighten-2 hoverable"><h5><%="#{location.name}"%></h5>
-        <%="#{location.address}"%></div><br>
-      <%end%>
-    <%end%>
-  </div>
+  <%=render 'user_locations'%>
 </div>
 
-
+<!--Lower Header Row -->
 <div class='row'>
-<div class='col s12 m4 center-align' style="font-size:140%">Attending</div>
-<div class='col s12 m2 center-align'></div>
-<div class='col s12 m6 center-align' style="font-size:140%">Categories</div>
+  <div class='col s12 m4 center-align' style="font-size:140%">Attending</div>
+  <div class='col s12 m2 center-align'></div>
+  <div class='col s12 m6 center-align' style="font-size:140%">Categories</div>
 </div>
+
+<!--Lower Cards Row -->
 <div class='row'>
-  <div class='col s12 m4 card-panel grey lighten-2'>
-    <%if @user.all_unowned.present?%>
-        <%@user.all_unowned.each do |room|%>
-          <%=link_to study_room_path(room.slug) do%>
-            <div class=" grey lighten-2 hoverable"><h5><%="#{room.name}"%></h5>
-            <%="#{room.location.name} - #{room.location.address}"%></div><br>
-          <%end%>
-        <%end%>
-        <%else%>
-        <p>You aren't attending any events yet.</p>
-    <%end%>
-  </div>
+  <%=render 'rooms_attending'%>
 
     <div class='center-align'>
       <%if @user.all_categories.present?%>

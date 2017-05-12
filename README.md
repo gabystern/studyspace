@@ -39,9 +39,7 @@ Categories Show: - MARIANNA
 Search / Reputations
 
 Last steps to skateboard:
-# Adding navigation with Home/Study Rooms/Create   Categories/Locations/User   Log In - Log Out
-# 
-
+# Adding navigation with Home/Study Rooms/Create   Categories/Locations/User   Log In - Log Out DONE
 
 Improved Model SQL methods: - DONE
 # Study_rooms.upcoming - OK
@@ -90,17 +88,17 @@ CSS/Design
 WEDNESDAY --
 
 # Materialize stuff:
-# Location Show - MARIANNA
-# Category Show - MARIANNA
-# User Show - MAX
-# User Index - MAX
-# Study Room Index - KYLE
+# Location Show - MARIANNA DONE
+# Category Show - MARIANNA DONE
+# User Show - MAX DONE
+# User Index - MAX DONE
+# Study Room Index - KYLE 
 # Study Room New - KYLE
-# Consistency after all pages are done
+# Consistency after all pages are done - GABY
 
 # Add Button to Create New Study Room on show page/user page - MAX DONE
 # Owners can edit their pages - MAX DONE
-# Nav bar - GABY
+# Nav bar - GABY DONE
 # 
 
 
@@ -111,19 +109,20 @@ WEDNESDAY --
 # Navigation - GABY
 
 # Final display set up - GABY
-#
 
-# Refactoring / Code Review
-# Write out Specs
+# Refactoring - MAX sort of
 # Finish Analytics page - DONE
-# Push to Heroku
+# Push to Heroku DONE
+# Create Room form checkbox DONE
 
+Remaining issues:
+# Odds and ends?
+# User page functionality on Heroku
 
+# Code Review
+# Write out Specs
+# Party
 
-
-
-
-# Stretch Goals
 
 
 
@@ -135,20 +134,23 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: 2.4.1
 
-* System dependencies
+* System dependencies: Beyond standard gems - BCrypt for passwords, Materialize for layout, Rspec - testing, Geocoder - address long/lat conversion, jQuery, rails_12factor - for heroku fixes
 
-* Configuration
+* Configuration - Postgresql db
+    Modified production environment file:
+        config.serve_static_assets = true
+        config.assets.compile = true
 
-* Database creation
+* Database creation -  rails db:create, db:migrate
 
-* Database initialization
+* Database initialization - base seeds included for rails db:seed
 
-* How to run the test suite
+* How to run the test suite - rspec in CLI will run tests
 
-* Services (job queues, cache servers, search engines, etc.)
+* Services (job queues, cache servers, search engines, etc.) - N/A
 
-* Deployment instructions
+* Deployment instructions - May require some adjustments for Heroku.  
 
 * ...
