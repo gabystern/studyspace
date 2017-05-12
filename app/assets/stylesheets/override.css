@@ -75,3 +75,7 @@ footer.page-footer {
 .d-flex {
     display:flex;
 }
+
+.loc-icons {
+  line-height: 50%;
+}
