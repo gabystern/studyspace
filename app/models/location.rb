@@ -60,22 +60,18 @@ class Location < ApplicationRecord
   end
 
   def self.most_popular
-    array = self.all.group(:address).count.first(3)
-    array.map do |location|
-      Location.find_by(address: location[0])
-    end
+    self.ranked.first(3)
   end
 
   def self.ranked
     array = self.all.group(:address).count
-    array.map do |location|
-      Location.find_by(address: location[0])
-    end
+    array.map {|location| Location.find_by(address: location[0]) }
   end
 
   def self.coord_output(locations)
 
     marker = "&markers=color:blue"
+
     if locations.class == Array
       marklist = locations.map {|loc| "%7C#{loc.latitude},#{loc.longitude}"}.join
     else

@@ -1,0 +1,12 @@
+<div class='col s4 card-panel grey lighten-2'>
+    <%if @user.all_owned.present?%>
+      <%@user.all_owned.each do |room|%>
+        <%=link_to study_room_path(room.slug) do%>
+          <div class=" grey lighten-2 hoverable"><h5><%="#{room.name}"%></h5>
+          <%="#{room.location.name}, #{room.location.address}"%></div><br>
+        <%end%>
+      <%end%>
+    <%else%>
+      <p class="grey-text flow-text"><i>No hosted rooms</i></p>
+    <%end%>
+</div>

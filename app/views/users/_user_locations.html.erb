@@ -1,0 +1,12 @@
+<div class="col s12 m4 card-panel grey lighten-2">
+    <%if @user.all_locations.present?%>
+      <%@user.all_locations.each do |location|%>
+        <%=link_to location_path(location.slug) do%>
+          <div class=" grey lighten-2 hoverable"><h5><%="#{location.name}"%></h5>
+          <%="#{location.address}"%></div><br>
+        <%end%>
+      <%end%>
+    <%else%>
+      <p>You haven't been to any locations yet.</p>
+    <%end%>
+  </div>

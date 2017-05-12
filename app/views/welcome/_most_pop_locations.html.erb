@@ -1,0 +1,17 @@
+
+<div class ="row">
+      <% Location.most_popular.each_with_index do |location, index| %>
+          <div class="col s12 m4 center-align'">
+              <div class="card hoverable">
+                  <%=link_to location_path(location.slug) do%>
+                      <div class="card-image">
+                          <div class="responsive-img"><%=image_tag("#{index+1}.jpg")%></div>
+                          <div class="card-content center-align">
+                              <div id="menu" ><%=location.name%></div>
+                          </div>
+                      </div>
+                  <%end%>
+              </div>
+          </div>
+      <% end %>
+    </div>

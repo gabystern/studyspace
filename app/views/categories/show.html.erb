@@ -37,7 +37,7 @@
 
               <% @category.past.each do |room| %>
                 <%=link_to study_room_path(room.slug) do%>
-                  <div class=" grey lighten-2 hoverable"><%="#{room.name} - #{room.start_time}"%></div>
+                  <div class=" grey lighten-2 hoverable"><%="#{room.name} - #{room.start_time.strftime("%A, %B %d %I:%M %p")}"%></div>
                 <%end%>
               <% end %>
             <% end %>
