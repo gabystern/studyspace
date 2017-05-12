@@ -44,14 +44,8 @@ class StudyRoomsController < ApplicationController
    end
 
   def show
-    if StudyRoom.find_by_slug(params[:id])
-      @study_room = StudyRoom.find_by_slug(params[:id])
-    else
-      @study_room = StudyRoom.find(params[:id])
-    end
-    @study_room
+    @study_room = StudyRoom.find_by_slug(params[:id])
   end
-
 
   def edit
     @study_room = StudyRoom.find_by_slug(params[:id])
@@ -60,9 +54,28 @@ class StudyRoomsController < ApplicationController
   end
 
   def update
-    @study_room = StudyRoom.find_by_slug(params[:id])
+    @study_room = StudyRoom.find(params[:id])
 
-    
+    if params[:study_room][:location][:name] == ''
+      location_id = params[:study_room][:location_id]
+    else
+      location_id = Location.find_or_create(params[:study_room][:location]).id
+    end
+
+    if params[:study_room][:category][:name] == ''
+      category_id = params[:study_room][:category_id]
+    else
+      category_id = Category.find_or_create(params[:study_room][:category]).id
+    end
+
+    @study_room.update(
+                  name: params[:study_room][:name],
+                  start_time: start_time_convert(params[:study_room][:time]),
+                  end_time: end_time_convert(params[:study_room][:time]),
+                  category_id: category_id,
+                  location_id: location_id)
+
+    redirect_to study_room_path(@study_room.slug)
   end
 
   def destroy
