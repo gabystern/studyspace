@@ -65,8 +65,8 @@
              Address <%= l.text_area :address %> <br> <br>
              <%= l.check_box :wifi, {checked: @study_room.location.wifi }, "true", "false" %>
              <%= l.label :wifi, "Free Wifi" %> <br> <br>
-             Available spots <%= l.number_field :capacity, min: 1 %> <br> <br>
-             Volume at location <%= l.text_field :volume %> <br> <br>
+             Available spots <%= l.number_field :capacity, min: 1, value: @study_room.location.capacity %> <br> <br>
+             Volume at location <%= l.number_field :volume, min: 1, value: @study_room.location.volume %> <br> <br>
            <% end %>
           </div>
 
