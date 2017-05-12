@@ -58,12 +58,15 @@
 
           <div class="col s6">
 
+          <% @study_room.location.wifi == "1" ? default_value = true :  default_value = false %>
+
           <b> Add a location </b> <br>
           <br>
            <%= f.fields_for :location do |l| %>
              Name <%= l.text_field :name %> <br> <br>
              Address <%= l.text_area :address %> <br> <br>
-             Wifi <%= l.check_box :wifi %> <br> <br>
+             <%= l.check_box :wifi, {checked: @study_room.location.wifi }, "true", "false" %>
+             <%= l.label :wifi, "Free Wifi" %> <br> <br>
              Available spots <%= l.number_field :capacity, min: 1 %> <br> <br>
              Volume at location <%= l.text_field :volume %> <br> <br>
            <% end %>
