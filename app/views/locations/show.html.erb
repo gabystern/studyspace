@@ -37,7 +37,7 @@
               <% if @location.past.empty? %> No one has previously studied here.
               <% else %>
                 <% @location.past.each do |room| %>
-                  <li> <%= link_to "#{room.name} - #{room.start_time.strftime("%A, %B %d %I:%M %p")}, study_room_path(room.slug)"%> </li>
+                  <li> <%= link_to "#{room.name} - #{room.start_time.strftime("%A, %B %d %I:%M %p")}", study_room_path(room.slug)%> </li>
                 <% end %>
               <% end %>
             </ul>

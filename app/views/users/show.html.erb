@@ -21,7 +21,7 @@
 <!--Top Cards Row -->
 <div class='row d-flex'>
   <%=render 'hosted_rooms'%>
-  <div class="col s12 m4 center-align"><img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=300x400&scale=3"+Location.coord_output(@user.all_locations)%>></div>
+  <div class="card-panel col s12 m4 center-align"><img class="responsive-img center" src=<%="https://maps.googleapis.com/maps/api/staticmap?size=300x400&scale=3"+Location.coord_output(@user.all_locations)%>></div>
   <%=render 'user_locations'%>
 </div>
 

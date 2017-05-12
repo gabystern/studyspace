@@ -1,7 +1,8 @@
 <div class='col s5 offset-s1'>
     <%@locations.each do |location| %>
+    <%= link_to location_path(location.slug) do %>
       <div class='card grey lighten-2 hoverable'>
-            <span class="text center-align"><b><%=link_to location.name, location_path(location.slug)%></b></span><br>
+            <span class="text center-align"><b><%=location.name%></b></span><br>
             <span class="text">Address: <%=location.address%></span><br>
             <span class="text">
             <span class="material-icons">
@@ -21,10 +22,11 @@
             <%end%>
             </span><b><%=location.volume%>
             <i class="material-icons">
-              supervisor_account  
+              supervisor_account
             </i><b><%=location.capacity%></b>
-            
+
             </span>
       </div>
+      <% end %>
       <% end %>
     </div>
