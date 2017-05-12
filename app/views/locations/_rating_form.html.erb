@@ -1,0 +1,7 @@
+<%= form_tag ratings_path do %>
+  <%= label_tag :score %>
+  <%= number_field_tag :score %>
+  <%= hidden_field_tag :location_id, :value => @location.id %>
+  <%= hidden_field_tag :user_id, :value => current_user.id %>
+  <%= submit_tag %>
+  <%end%>

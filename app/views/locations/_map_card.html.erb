@@ -6,12 +6,6 @@
       <div class="card-stacked">
         <div class="card-content">
           <p>Address: <b><%= @location.address %></b></p>
-          <p>Average Rating: 
-            <%if !@location.avg_rating.nil?%>
-              No rating
-            <%else%>
-              <b><%= @location.avg_rating%></b>
-            <%end%> </p>
           <span class="loc-icons">Wifi: </span>
             <span class="material-icons loc-icons">
               <%if @location.wifi == true%>
@@ -20,7 +14,7 @@
                 <b class="grey-text text-darken-1">portable_wifi_off</b>
               <%end%>
             </span>&nbsp&nbsp&nbsp&nbsp&nbsp
-          
+
           <span class="loc-icons">Volume: </span>
             <span class="material-icons">
               <%if @location.volume == '1'%>
@@ -31,12 +25,12 @@
                 <b>volume_up</b>
               <%end%>
             </span><b><%=@location.volume%></b>&nbsp&nbsp&nbsp&nbsp&nbsp
-          
+
           <span class="loc-icons">Capacity: </span><i class="material-icons loc-icons">
-              supervisor_account  
-            </i><b><%=@location.capacity%></b> 
-            
-            
+              supervisor_account
+            </i><b><%=@location.capacity%></b>
+
+
         </div>
       </div>
     </div>
